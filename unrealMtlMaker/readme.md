@@ -24,3 +24,10 @@
 - **Editor Utility Widget 블루프린트**: 사용자 인터페이스를 구축하는 데 사용되며, 사용자 입력을 Python 스크립트로 전달합니다.
 
 이 프로젝트는 언리얼 엔진에서의 머티리얼 생성 과정을 자동화하여 개발자의 작업 효율성을 높이고, 사용자가 쉽게 머티리얼을 생성할 수 있도록 돕기 위해 설계되었습니다. 이 도구는 특히 대규모 프로젝트에서 반복적인 머티리얼 생성 작업을 줄이는 데 유용합니다.
+
+## 위젯
+
+- 디자이너
+  ![image](https://github.com/CharlieYang0040/UnrealScriptsRepo/assets/129147417/c9395106-c7bc-48f7-87e9-cfd4c31f9cb8)
+- 그래프
+  ![image](https://github.com/CharlieYang0040/UnrealScriptsRepo/assets/129147417/d3f13633-933c-445a-90c4-6a463a3625f3)
