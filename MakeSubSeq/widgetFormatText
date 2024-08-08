@@ -1,0 +1,4 @@
+import MakeSubSeq
+import importlib; importlib.reload(MakeSubSeq)
+print("#### Make SubSequence #####\nProject Selected : {ProjectSelectComboBox}")
+MakeSubSeq.create_subsequence({ProjectSelectComboBox})
