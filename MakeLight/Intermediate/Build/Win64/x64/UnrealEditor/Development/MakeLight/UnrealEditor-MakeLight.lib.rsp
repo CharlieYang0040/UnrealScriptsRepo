@@ -1,0 +1,12 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UnrealEditor-MakeLight.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"D:\Unreal Projects\MakeSubSeq\Intermediate\Build\Win64\x64\MakeSubSeqEditor\Development\UnrealEd\SharedPCH.UnrealEd.Cpp20.InclOrderUnreal5_0.h.obj"
+"D:\Unreal Projects\MakeSubSeq\Plugins\MakeLight\Intermediate\Build\Win64\x64\UnrealEditor\Development\MakeLight\Module.MakeLight.cpp.obj"
+"D:\Unreal Projects\MakeSubSeq\Plugins\MakeLight\Intermediate\Build\Win64\x64\UnrealEditor\Development\MakeLight\Default.rc2.res"
+/OUT:"D:\Unreal Projects\MakeSubSeq\Plugins\MakeLight\Intermediate\Build\Win64\x64\UnrealEditor\Development\MakeLight\UnrealEditor-MakeLight.lib"

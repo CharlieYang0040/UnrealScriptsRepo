@@ -1,0 +1,11 @@
+{
+	"RemapUnityFiles": 
+	{
+		"Module.MakeLight.cpp.obj": [
+			"MakeLight.init.gen.cpp.obj",
+			"MakeLightTypes.gen.cpp.obj",
+			"MakeLightFunctionality.cpp.obj",
+			"MakeLightModule.cpp.obj"
+		]
+	}
+}
