@@ -19,32 +19,41 @@
 
 - WBP_MakeLight.uasset를 프로젝트 폴더의 Content 폴더 하위의 원하는 위치에 넣는다.
 
-![image (2)](https://github.com/user-attachments/assets/83346c82-c058-4d16-b81d-a5530b181120)
-
-
-
 ![image](https://github.com/user-attachments/assets/d80da976-9f4e-46ee-8cca-227783010b1f)
 
 
+- WBP_MakeLight 위젯을 찾아 우클릭 후 에디터 유틸리티 실행을 누른다.
 
-- MakeLight 폴더는 플러그인의 정보를 담는 .uplugin 파일과 코드들이 컴파일 되어있는 Binaries 폴더로 이루어져 있다.
+![image](https://github.com/user-attachments/assets/e5a8b879-5d21-4b10-94e7-701c4c9a8a78)
+
+
 
 ## 2. UI 및 기능 소개
 
-![image (5)](https://github.com/user-attachments/assets/66d1a93a-8dd9-4614-9f40-c734d2bbba32)
+![image](https://github.com/user-attachments/assets/4dab361e-86a7-43c4-bb0f-c5d31da5bd06)
 
 
 - 조명 종류 : 생성할 라이트의 종류를 선택한다. Spot, Rect, Point
+
 - 조명 용도 : 생성할 라이트의 용도를 선택한다. 
 Key, Fill, LeftRim, RightRim - 사전 설정된 위치로 생성된다.
 ThreePoint - Key, Fill, LeftRim, RightRim을 모두 한번에 생성한다.
 None - 원점에 생성한다.
+
 - 부착할 본 : 어태치할 본을 선택한다.
-Head, Spine - 각 Bip001-Head, Bip001-Spine2에 어태치한다.
+Head, Neck, Spine - 각 Bip001-Head, Bip001-Neck Bip001-Spine2에 어태치한다.
 None - 본이 아닌 액터에 어태치한다.
 Custom - 우측의 “Custom 본 이름 입력” 창에 입력된 본의 이름으로 어태치한다.
+
+- 스켈레탈 메시 : 캐릭터를 블루프린트로 사용해야 할 때, 하위에 있는 스켈레탈 메시를 선택한다.
+![image](https://github.com/user-attachments/assets/2648129d-d7d4-4c43-9086-387960427d3d)
+
+- 스켈레탈 메시 찾기 : 선택한 블루프린트에서 스켈레탈 메시를 찾는다.
+![스켈레탈메시찾기](https://github.com/user-attachments/assets/e024b6ab-a407-4e7c-ae57-9961ec7f035f)
+
 - 조명 생성 및 부착 : 설정된 라이트를 생성하고 선택한 액터에 어태치한다.
-- 기존 조명 부착 : 첫번째로 선택한 조명을 두번째로 선택한 액터에 부착한다.
+
+- 기존 조명 부착 : 선택한 액터와 라이트를 어태치한다. !!(꼭 액터를 첫번째로 선택한다)
 
 ## 3. 사용 예시
 
