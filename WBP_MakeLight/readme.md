@@ -35,15 +35,15 @@
 
 - 조명 종류 : 생성할 라이트의 종류를 선택한다. Spot, Rect, Point
 
-- 조명 용도 : 생성할 라이트의 용도를 선택한다. 
-Key, Fill, LeftRim, RightRim - 사전 설정된 위치로 생성된다.
-ThreePoint - Key, Fill, LeftRim, RightRim을 모두 한번에 생성한다.
-None - 원점에 생성한다.
+- 조명 용도 : 생성할 라이트의 용도를 선택한다.  
+Key, Fill, LeftRim, RightRim - 사전 설정된 위치로 생성된다.  
+ThreePoint - Key, Fill, LeftRim, RightRim을 모두 한번에 생성한다.  
+None - 원점에 생성한다.  
 
-- 부착할 본 : 어태치할 본을 선택한다.
-Head, Neck, Spine - 각 Bip001-Head, Bip001-Neck Bip001-Spine2에 어태치한다.
-None - 본이 아닌 액터에 어태치한다.
-Custom - 우측의 “Custom 본 이름 입력” 창에 입력된 본의 이름으로 어태치한다.
+- 부착할 본 : 어태치할 본을 선택한다.  
+Head, Neck, Spine - 각 Bip001-Head, Bip001-Neck Bip001-Spine2에 어태치한다.  
+None - 본이 아닌 액터에 어태치한다.  
+Custom - 우측의 “Custom 본 이름 입력” 창에 입력된 본의 이름으로 어태치한다.  
 
 - 스켈레탈 메시 : 캐릭터를 블루프린트로 사용해야 할 때, 하위에 있는 스켈레탈 메시를 선택한다.
 ![image](https://github.com/user-attachments/assets/2648129d-d7d4-4c43-9086-387960427d3d)
@@ -53,7 +53,8 @@ Custom - 우측의 “Custom 본 이름 입력” 창에 입력된 본의 이름
 
 - 조명 생성 및 부착 : 설정된 라이트를 생성하고 선택한 액터에 어태치한다.
 
-- 기존 조명 부착 : 선택한 액터와 라이트를 어태치한다. !!(꼭 액터를 첫번째로 선택한다)
+- 기존 조명 부착 : 선택한 액터와 라이트를 어태치한다. **(꼭 액터를 첫번째로 선택한다!!)**
+
 
 ## 3. 사용 예시
 
@@ -67,7 +68,8 @@ Custom - 우측의 “Custom 본 이름 입력” 창에 입력된 본의 이름
    ![머리림라이트생성하기](https://github.com/user-attachments/assets/fa4a8587-4174-4fa0-a9a6-c7e4ffd3660e)
     
 
-- 기존 조명을 어태치하기
+- 기존 조명을 어태치하기  
+  **위젯버전에서는 스켈레탈메시 또는 캐릭터 블루프린트를 첫번째로 선택한다!!**
     
    ![기존조명을어태치하기](https://github.com/user-attachments/assets/fd6aead0-6acd-470c-b4b3-05d75d312534)
     
@@ -79,4 +81,6 @@ Custom - 우측의 “Custom 본 이름 입력” 창에 입력된 본의 이름
 
 ## 4. 버전 기록
 
-24.09.23 Alpha1 : https://github.com/CharlieYang0040/UnrealScriptsRepo/raw/refs/heads/main/MakeLight/MakeLight_Alpha1.zip
+24.09.23 Alpha1 : https://github.com/CharlieYang0040/UnrealScriptsRepo/raw/refs/heads/main/MakeLight/MakeLight_Alpha1.zip  
+24.10.04 Widget1:
+https://github.com/CharlieYang0040/UnrealScriptsRepo/raw/refs/heads/main/WBP_MakeLight/WBP_MakeLight.uasset
