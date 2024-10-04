@@ -9,30 +9,22 @@
 
 ## 1. 파일 구성 및 설치 방법
 
-[**다운로드**](https://github.com/CharlieYang0040/UnrealScriptsRepo/raw/refs/heads/main/MakeLight/MakeLight_Alpha1.zip) https://github.com/CharlieYang0040/UnrealScriptsRepo/raw/refs/heads/main/MakeLight/MakeLight_Alpha1.zip
+[**다운로드**](https://github.com/CharlieYang0040/UnrealScriptsRepo/raw/refs/heads/main/WBP_MakeLight/WBP_MakeLight.uasset) https://github.com/CharlieYang0040/UnrealScriptsRepo/raw/refs/heads/main/WBP_MakeLight/WBP_MakeLight.uasset
 
 
-![image](https://github.com/user-attachments/assets/71671381-30d7-43f2-aade-078e6f9f4a10)
+![image](https://github.com/user-attachments/assets/4cbf95e2-610e-46ee-aa15-5d95def5a2d2)
+
+![image](https://github.com/user-attachments/assets/c7c7c6cc-63f9-4af1-bec7-75c05e1aea09)
 
 
-- 다운 받은 압축 파일을 푼다.
-
-![image (1)](https://github.com/user-attachments/assets/1be89720-79ad-4b12-8415-e82e930cfcef)
-
-
-- MakeLight 폴더를 프로젝트 폴더의 Plugins 폴더에 넣는다.
+- WBP_MakeLight.uasset를 프로젝트 폴더의 Content 폴더 하위의 원하는 위치에 넣는다.
 
 ![image (2)](https://github.com/user-attachments/assets/83346c82-c058-4d16-b81d-a5530b181120)
 
 
-- 엔진의 플러그인 설정에서 MakeLight를 확인한다.
 
-![image (3)](https://github.com/user-attachments/assets/3810c66b-b14e-4f46-880b-4c77fd13a274)
+![image](https://github.com/user-attachments/assets/d80da976-9f4e-46ee-8cca-227783010b1f)
 
-
-- 창 메뉴에서 MakeLight 플러그인을 열 수 있다.
-
-![image (4)](https://github.com/user-attachments/assets/cef5c940-fba8-40ad-94ac-e5179265363e)
 
 
 - MakeLight 폴더는 플러그인의 정보를 담는 .uplugin 파일과 코드들이 컴파일 되어있는 Binaries 폴더로 이루어져 있다.
