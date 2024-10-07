@@ -5,8 +5,8 @@
 ## 목차
 
 1. 파일 구성 및 설치 방법
-2. UI 및 기능 소개
-   2-1. MakeLight
+2. UI 및 기능 소개  
+   2-1. MakeLight  
    2-2. MakeSubSeq
 3. 사용 예시
 4. 버전 기록
@@ -171,7 +171,7 @@ Custom - 우측의 “Custom 본 이름 입력” 창에 입력된 본의 이름
 
    ![image](https://github.com/user-attachments/assets/ce40dc11-864f-42fd-a513-24da2e2428ea)
 
-   Playback 범위에 맞춰 자동 등록됩니다.
+   Playback 범위에 맞춰 자동 등록됩니다. (웜업세팅을 고려해 ±50f으로 설정됩니다.)
 
   
 
