@@ -1,9 +1,13 @@
 # WBP_MakeLight
+![image](https://github.com/user-attachments/assets/521893a1-b458-4407-b31e-a6851bf8b539)
+
 
 ## 목차
 
 1. 파일 구성 및 설치 방법
 2. UI 및 기능 소개
+   2-1. MakeLight
+   2-2. MakeSubSeq
 3. 사용 예시
 4. 버전 기록
 
@@ -24,7 +28,7 @@
 
 - WBP_MakeLight 위젯을 찾아 우클릭 후 에디터 유틸리티 실행을 누른다.
 
-![image](https://github.com/user-attachments/assets/e5a8b879-5d21-4b10-94e7-701c4c9a8a78)
+![image (1)](https://github.com/user-attachments/assets/59a38bed-5742-4f83-b2c5-34953c7bb62f)
 
 
 
@@ -33,7 +37,7 @@
 ![image](https://github.com/user-attachments/assets/521893a1-b458-4407-b31e-a6851bf8b539)
 
 
-### 2-1. MakeLight
+## 2-1. MakeLight
 - 조명 종류 : 생성할 라이트의 종류를 선택한다. Spot, Rect, Point
 
 - 조명 용도 : 생성할 라이트의 용도를 선택한다.  
@@ -57,8 +61,17 @@ Custom - 우측의 “Custom 본 이름 입력” 창에 입력된 본의 이름
 - 기존 조명 부착 : 선택한 액터와 라이트를 어태치한다. **(꼭 액터를 첫번째로 선택한다!!)**
 
 
-### 2-2. MakeSubSeq
 
+
+
+
+
+
+
+
+## 2-2. MakeSubSeq
+
+### 실행법
 ![image](https://github.com/user-attachments/assets/29cf4424-d181-40d0-971a-0d6f3b7ea19d)
 
 
@@ -79,7 +92,7 @@ Custom - 우측의 “Custom 본 이름 입력” 창에 입력된 본의 이름
 
 4. 아래 설정법을 참고하여 Make를 눌러 생성합니다.
 
-- 설정법
+### 설정법
 
 ![image (3)](https://github.com/user-attachments/assets/fa19b96a-e5fe-4db4-9b68-873e04c5dc04)
 
@@ -108,7 +121,7 @@ ex)
 Make 버튼을 누르면 생성을 시작합니다.
 **현재 열려있는 시퀀스로 실행됩니다!**
 
-- 기능
+### 기능
 
 ![image (7)](https://github.com/user-attachments/assets/78a4b995-fc22-4460-ada3-b390b885edb7)
 
