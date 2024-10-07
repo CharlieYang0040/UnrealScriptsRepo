@@ -121,10 +121,10 @@ def create_shot(ProjectSelected, ProjectName_CheckBox, LIT_CheckBox, FX_CheckBox
     print(f"partSelected : {partSelected}")
 
     # 새 레벨 시퀀스 에셋 생성
-    current_level_sequence = unreal.LevelSequenceEditorBlueprintLibrary.get_current_level_sequence()
-    shot_name = current_level_sequence.get_name()
+    focused_level_sequence = unreal.LevelSequenceEditorBlueprintLibrary.get_focused_level_sequence()
+    shot_name = focused_level_sequence.get_name()
     print(f"shot_name : {shot_name}")
-    shot_path = current_level_sequence.get_path_name()
+    shot_path = focused_level_sequence.get_path_name()
     shot_package_path = "/".join(shot_path.split("/")[:-1]) #/Game/A_Cinematic_Workspace/Sequencer/2024_Enchantress/Shot
     print(f"shot_package_path : {shot_package_path}")
     # 상위 폴더 이름을 project_name으로 변수 추가
