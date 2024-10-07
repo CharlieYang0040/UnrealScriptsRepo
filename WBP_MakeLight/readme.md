@@ -72,84 +72,116 @@ Custom - 우측의 “Custom 본 이름 입력” 창에 입력된 본의 이름
 ## 2-2. MakeSubSeq
 
 ### 실행법
-![image](https://github.com/user-attachments/assets/29cf4424-d181-40d0-971a-0d6f3b7ea19d)
+   
 
 
-1. 서브 시퀀스를 생성 할 샷 시퀀스를 엽니다.
-
-![image (1)](https://github.com/user-attachments/assets/59a38bed-5742-4f83-b2c5-34953c7bb62f)
-
-
-2. WBP_MakeLight 위젯을 우클릭하여 실행합니다.
-
-![image](https://github.com/user-attachments/assets/cd47a8e1-9a13-4639-b643-de16e234a959)
+1. 서브 시퀀스를 생성 할 샷 시퀀스를 엽니다.  
+   ![image](https://github.com/user-attachments/assets/29cf4424-d181-40d0-971a-0d6f3b7ea19d)  
 
 
-3. 위젯 선택 버튼에서 MakeSubSeq를 누릅니다.
-
-![image (6)](https://github.com/user-attachments/assets/69e4e119-0240-4c31-a91f-398daaf38e32)
+   ![image (1)](https://github.com/user-attachments/assets/59a38bed-5742-4f83-b2c5-34953c7bb62f)
 
 
-4. 아래 설정법을 참고하여 Make를 눌러 생성합니다.
+3. WBP_MakeLight 위젯을 우클릭하여 실행합니다.
+
+   ![image](https://github.com/user-attachments/assets/cd47a8e1-9a13-4639-b643-de16e234a959)
+
+
+4. 위젯 선택 버튼에서 MakeSubSeq를 누릅니다.
+
+   ![image (6)](https://github.com/user-attachments/assets/69e4e119-0240-4c31-a91f-398daaf38e32)
+
+
+5. 아래 설정법을 참고하여 Make를 눌러 생성합니다.
+
+
+## 2-2. MakeSubSeq
 
 ### 설정법
+1. 프로젝트
 
-![image (3)](https://github.com/user-attachments/assets/fa19b96a-e5fe-4db4-9b68-873e04c5dc04)
-
-
-프로젝트별 네이밍 컨벤션에 맞추기 위한 설정입니다. (현재 Default로 고정)
-
-![image (4)](https://github.com/user-attachments/assets/a3efdd3b-2954-4d16-8fb4-88da948b6a70)
+   ![image (3)](https://github.com/user-attachments/assets/fa19b96a-e5fe-4db4-9b68-873e04c5dc04)
 
 
-체크 시 서브시퀀스 이름에 프로젝트 이름을 추가하는 설정입니다.
-
-ex)
-
-켰을때 : LIT_SUB_2024_Enchantress_Shot_01_01
-
-껐을때 : LIT_SUB_Shot_01_01
-
-![image (5)](https://github.com/user-attachments/assets/420f45ab-886e-457a-95a2-5758588343df)
+   프로젝트별 네이밍 컨벤션에 맞추기 위한 설정입니다. (현재 Default로 고정)
 
 
-원하는 파트만 선택해 생성할 수 있습니다.
 
-![image (6)](https://github.com/user-attachments/assets/27b1ce50-9037-4ce4-828b-399aa8e4b890)
+2. 프로젝트 네임
+
+   ![image (4)](https://github.com/user-attachments/assets/a3efdd3b-2954-4d16-8fb4-88da948b6a70)
 
 
-Make 버튼을 누르면 생성을 시작합니다.
-**현재 열려있는 시퀀스로 실행됩니다!**
+   체크 시 서브시퀀스 이름에 프로젝트 이름을 추가하는 설정입니다.
+
+   ex)
+
+   켰을때 : LIT_SUB_2024_Enchantress_Shot_01_01
+
+   껐을때 : LIT_SUB_Shot_01_01
+
+
+
+3. 파트
+   
+   ![image (5)](https://github.com/user-attachments/assets/420f45ab-886e-457a-95a2-5758588343df)
+
+
+   원하는 파트만 선택해 생성할 수 있습니다.
+
+  
+4. 생성
+   
+   ![image (6)](https://github.com/user-attachments/assets/27b1ce50-9037-4ce4-828b-399aa8e4b890)
+
+
+
+
+   Make 버튼을 누르면 생성을 시작합니다.
+   **현재 열려있는 시퀀스로 실행됩니다!**
+
+
+
+## 2-2. MakeSubSeq
 
 ### 기능
+1. 폴더구조
 
-![image (7)](https://github.com/user-attachments/assets/78a4b995-fc22-4460-ada3-b390b885edb7)
+   ![image (7)](https://github.com/user-attachments/assets/78a4b995-fc22-4460-ada3-b390b885edb7)
 
+   폴더 구조는 다음과 같이 생성됩니다.
 
-폴더 구조는 다음과 같이 생성됩니다.
+   Shot의 위치에서 실행하면 하위 구조는 자동 생성됩니다.
 
-Shot의 위치에서 실행하면 하위 구조는 자동 생성됩니다.
+   프로젝트 이름은 Shot폴더의 상위 폴더의 이름을 가지고 옵니다.
 
-프로젝트 이름은 Shot폴더의 상위 폴더의 이름을 가지고 옵니다.
+  
 
-![image (8)](https://github.com/user-attachments/assets/1baef0ef-73fd-48d5-a88f-a6fb7890f547)
+2. 레벨라이트 포함
 
+   ![image (8)](https://github.com/user-attachments/assets/1baef0ef-73fd-48d5-a88f-a6fb7890f547)
 
-LIT 서브시퀀스의 경우에는 레벨에 포함된 라이트를 자동으로 연결합니다.
+   LIT 서브시퀀스의 경우에는 레벨에 포함된 라이트를 자동으로 연결합니다.
 
-기본 라이트 세팅이 레벨에 없을 경우 ‘스포너블’로 생성합니다.
+   기본 라이트 세팅이 레벨에 없을 경우 ‘스포너블’로 생성합니다.
 
-![image (9)](https://github.com/user-attachments/assets/a7b27a32-4694-4a40-b8b2-d26e55611026)
+  
 
+3. 섹션 범위 설정
 
-Playback 범위에 맞춰 자동 등록됩니다.
+   ![image](https://github.com/user-attachments/assets/ce40dc11-864f-42fd-a513-24da2e2428ea)
 
-![image (10)](https://github.com/user-attachments/assets/b82204e5-8d12-4320-a6e0-d98faeee6d21)
+   Playback 범위에 맞춰 자동 등록됩니다.
 
+  
 
-중복된 이름이 있을 경우 경고 창을 팝업합니다. 예를 누르면 다음 번호로 생성,
+4. 네이밍
 
-아니오를 누르면 작업이 취소됩니다.
+   ![image (10)](https://github.com/user-attachments/assets/b82204e5-8d12-4320-a6e0-d98faeee6d21)
+
+   중복된 이름이 있을 경우 경고 창을 팝업합니다. 예를 누르면 다음 번호로 생성,
+
+   아니오를 누르면 작업이 취소됩니다.
 
 
 ## 3. 사용 예시
