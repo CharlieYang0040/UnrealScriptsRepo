@@ -209,12 +209,11 @@ Custom - 우측의 “Custom 본 이름 입력” 창에 입력된 본의 이름
 
 ## 4. 버전 기록
 
-24.09.23 Alpha1 : https://github.com/CharlieYang0040/UnrealScriptsRepo/raw/refs/heads/main/MakeLight/MakeLight_Alpha1.zip  
-24.10.04 Widget1:
-https://github.com/CharlieYang0040/UnrealScriptsRepo/raw/24498cd2b81c637411fc9da226059fa3f9c01acd/WBP_MakeLight/WBP_MakeLight.uasset  
-24.10.07 widget2:
-https://github.com/CharlieYang0040/UnrealScriptsRepo/raw/refs/heads/main/WBP_MakeLight/WBP_MakeLight.uasset
-
+24.09.23 Alpha1 :  
+https://github.com/CharlieYang0040/UnrealScriptsRepo/raw/refs/heads/main/MakeLight/MakeLight_Alpha1.zip  
+24.10.04 Widget1:  
+https://github.com/CharlieYang0040/UnrealScriptsRepo/raw/24498cd2b81c637411fc9da226059fa3f9c01acd/WBP_MakeLight/WBP_MakeLight.uasset  24.10.07 widget2:  
+https://github.com/CharlieYang0040/UnrealScriptsRepo/raw/refs/heads/main/WBP_MakeLight/WBP_MakeLight.uasset  
 24.10.10 widget3:  
 https://github.com/CharlieYang0040/UnrealScriptsRepo/raw/refs/heads/main/WBP_MakeLight/WBP_MakeLight.uasset  
 ![image](https://github.com/user-attachments/assets/20ab3a83-b297-4907-82fd-0b95c9ff5f5c)  
