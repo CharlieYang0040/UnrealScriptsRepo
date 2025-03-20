@@ -1,0 +1,26 @@
+texture-converter
+├── src
+│   ├── main.py
+│   ├── gui
+│   │   ├── __init__.py
+│   │   ├── main_window.py
+│   │   └── widgets
+│   │       ├── __init__.py
+│   │       ├── image_preview.py
+│   │       └── converter_panel.py
+│   ├── core
+│   │   ├── __init__.py
+│   │   └── height_to_normal.py
+│   └── utils
+│       ├── __init__.py
+│       └── image_utils.py
+├── tests
+│   ├── __init__.py
+│   ├── test_converter.py
+│   └── test_image_utils.py
+├── resources
+│   └── styles
+│       └── style.qss
+├── requirements.txt
+├── setup.py
+└── README.md

@@ -1,0 +1,5 @@
+# Ignore the tests folder
+tests/
+
+# Ignore the virtual environment folder
+txcon-venv/
