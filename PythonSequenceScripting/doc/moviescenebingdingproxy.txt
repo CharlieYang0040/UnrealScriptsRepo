@@ -1,0 +1,197 @@
+unreal.MovieSceneBindingProxy
+class unreal.MovieSceneBindingProxy(binding_id: Guid = [], sequence: MovieSceneSequence = Ellipsis)
+Bases: StructBase
+
+Movie Scene Binding Proxy represents the binding ID (an FGuid) and the corresponding sequence that it relates to. This is primarily used for scripting where there is no support for FMovieSceneSequenceID and use cases where managing multiple bindings with their corresponding sequences is necessary.
+
+C++ Source:
+
+Module: MovieScene
+
+File: MovieSceneBindingProxy.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+binding_id (Guid): [Read-Write]
+
+sequence (MovieSceneSequence): [Read-Write]
+
+add_track(track_type) → MovieSceneTrack
+Add a new track to the specified binding
+
+Parameters:
+track_type (type(Class)) – A UMovieSceneTrack class type specifying the type of track to create
+
+Returns:
+The newly created track, if successful
+
+Return type:
+MovieSceneTrack
+
+property binding_id: Guid
+[Read-Only]
+
+Type:
+(Guid)
+
+find_tracks_by_exact_type(track_type) → Array[MovieSceneTrack]
+Find all tracks within a given binding of the specified type, not allowing sub-classed types
+
+Parameters:
+track_type (type(Class)) – A UMovieSceneTrack class type specifying the exact types of track to return
+
+Returns:
+An array containing any tracks that are exactly the same as the type specified
+
+Return type:
+Array[MovieSceneTrack]
+
+find_tracks_by_type(track_type) → Array[MovieSceneTrack]
+Find all tracks within a given binding of the specified type
+
+Parameters:
+track_type (type(Class)) – A UMovieSceneTrack class type specifying which types of track to return
+
+Returns:
+An array containing any tracks that match the type specified
+
+Return type:
+Array[MovieSceneTrack]
+
+get_child_possessables() → Array[MovieSceneBindingProxy]
+Get all the children of this binding
+
+Returns:
+An array containing all the binding’s children
+
+Return type:
+Array[MovieSceneBindingProxy]
+
+get_display_name() → Text
+Get this binding’s name
+
+Returns:
+The display name of the binding
+
+Return type:
+Text
+
+get_id() → Guid
+Get this binding’s ID
+
+Returns:
+The guid that uniquely represents this binding
+
+Return type:
+Guid
+
+get_name() → str
+Get this binding’s object non-display name
+
+Returns:
+The name of the binding
+
+Return type:
+str
+
+get_object_template() → Object
+Get this binding’s object template
+
+Returns:
+The object template of the binding
+
+Return type:
+Object
+
+get_parent() → MovieSceneBindingProxy
+Get the parent of this binding
+
+Returns:
+The binding’s parent
+
+Return type:
+MovieSceneBindingProxy
+
+get_possessed_object_class()
+Get this binding’s possessed object class
+
+Returns:
+The possessed object class of the binding
+
+Return type:
+type(Class)
+
+get_sorting_order() → int32
+Get the sorting order for this binding
+
+Returns:
+The sorting order of the requested binding
+
+Return type:
+int32
+
+get_tracks() → Array[MovieSceneTrack]
+Get all the tracks stored within this binding
+
+Returns:
+An array containing all the binding’s tracks
+
+Return type:
+Array[MovieSceneTrack]
+
+is_valid() → bool
+Check whether the specified binding is valid
+
+Return type:
+bool
+
+move_binding_contents(destination_binding_id) → None
+Move all the contents (tracks, child bindings) of the specified binding ID onto another
+
+Parameters:
+destination_binding_id (MovieSceneBindingProxy) – The identifier of the binding ID to move the contents to
+
+remove() → None
+Remove the specified binding
+
+remove_track(track_to_remove) → None
+Remove the specified track from this binding
+
+Parameters:
+track_to_remove (MovieSceneTrack) – The track to remove
+
+property sequence: MovieSceneSequence
+[Read-Only]
+
+Type:
+(MovieSceneSequence)
+
+set_display_name(display_name) → None
+Set this binding’s name
+
+Parameters:
+display_name (Text)
+
+set_name(name) → None
+Set this binding’s object non-display name
+
+Parameters:
+name (str) – The name of the binding
+
+set_parent(parent_binding) → None
+Set the parent to this binding
+
+Parameters:
+parent_binding (MovieSceneBindingProxy) – The parent to set the InBinding to
+
+set_sorting_order(sorting_order) → None
+Set the sorting order for this binding
+
+Parameters:
+sorting_order (int32) – The sorting order to set
+
+set_spawnable_binding_id(spawnable_binding_id) → None
+Set the spawnable id that the possessable binding should possess
+
+Parameters:
+spawnable_binding_id (MovieSceneObjectBindingID) – The spawnable’s binding id

@@ -1,0 +1,29 @@
+Begin Object Class=/Script/Sequencer.MovieSceneCopyableTrack Name="MovieSceneCopyableTrack_5" ExportPath="/Script/Sequencer.MovieSceneCopyableTrack'/Engine/Transient.MovieSceneCopyableTrack_5'"
+   Begin Object Class=/Script/MovieSceneTracks.MovieScene3DAttachTrack Name="MovieScene3DAttachTrack_21" ExportPath="/Script/MovieSceneTracks.MovieScene3DAttachTrack'/Engine/Transient.MovieSceneCopyableTrack_5:MovieScene3DAttachTrack_21'"
+      Begin Object Class=/Script/MovieSceneTracks.MovieScene3DAttachSection Name="MovieScene3DAttachSection_0" ExportPath="/Script/MovieSceneTracks.MovieScene3DAttachSection'/Engine/Transient.MovieSceneCopyableTrack_5:MovieScene3DAttachTrack_21.MovieScene3DAttachSection_0'"
+         Begin Object Class=/Script/MovieScene.MovieSceneBuiltInEasingFunction Name="EaseOutFunction" Archetype="/Script/MovieScene.MovieSceneBuiltInEasingFunction'/Script/MovieSceneTracks.Default__MovieScene3DAttachSection:EaseOutFunction'" ExportPath="/Script/MovieScene.MovieSceneBuiltInEasingFunction'/Engine/Transient.MovieSceneCopyableTrack_5:MovieScene3DAttachTrack_21.MovieScene3DAttachSection_0.EaseOutFunction'"
+         End Object
+         Begin Object Class=/Script/MovieScene.MovieSceneBuiltInEasingFunction Name="EaseInFunction" Archetype="/Script/MovieScene.MovieSceneBuiltInEasingFunction'/Script/MovieSceneTracks.Default__MovieScene3DAttachSection:EaseInFunction'" ExportPath="/Script/MovieScene.MovieSceneBuiltInEasingFunction'/Engine/Transient.MovieSceneCopyableTrack_5:MovieScene3DAttachTrack_21.MovieScene3DAttachSection_0.EaseInFunction'"
+         End Object
+      End Object
+   End Object
+   Begin Object Name="MovieScene3DAttachTrack_21" ExportPath="/Script/MovieSceneTracks.MovieScene3DAttachTrack'/Engine/Transient.MovieSceneCopyableTrack_5:MovieScene3DAttachTrack_21'"
+      Begin Object Name="MovieScene3DAttachSection_0" ExportPath="/Script/MovieSceneTracks.MovieScene3DAttachSection'/Engine/Transient.MovieSceneCopyableTrack_5:MovieScene3DAttachTrack_21.MovieScene3DAttachSection_0'"
+         Begin Object Name="EaseOutFunction" ExportPath="/Script/MovieScene.MovieSceneBuiltInEasingFunction'/Engine/Transient.MovieSceneCopyableTrack_5:MovieScene3DAttachTrack_21.MovieScene3DAttachSection_0.EaseOutFunction'"
+         End Object
+         Begin Object Name="EaseInFunction" ExportPath="/Script/MovieScene.MovieSceneBuiltInEasingFunction'/Engine/Transient.MovieSceneCopyableTrack_5:MovieScene3DAttachTrack_21.MovieScene3DAttachSection_0.EaseInFunction'"
+         End Object
+         AttachSocketName="Bip001-Neck"
+         AttachComponentName="SkeletalMeshComponent0"
+         ConstraintBindingID=(Guid=41C59AC945A2B7124A2C5BB175F21F69,SequenceID=469055910,ResolveParentIndex=0)
+         Easing=(EaseIn=MovieSceneBuiltInEasingFunction'MovieSceneCopyableTrack_5:MovieScene3DAttachTrack_21.MovieScene3DAttachSection_0.EaseInFunction',EaseOut=MovieSceneBuiltInEasingFunction'MovieSceneCopyableTrack_5:MovieScene3DAttachTrack_21.MovieScene3DAttachSection_0.EaseOutFunction')
+         SectionRange=Inclusive:-1584800:Exclusive:1128000
+         Signature=2890CACB480E3FA4FC0919A6210A2A83
+      End Object
+      ConstraintSections(0)="/Script/MovieSceneTracks.MovieScene3DAttachSection'MovieScene3DAttachSection_0'"
+      EvaluationFieldGuid=F45600AB4FB459F80A1ABA94D3954362
+      EvaluationField=(Entries=((Section="/Script/MovieSceneTracks.MovieScene3DAttachSection'MovieScene3DAttachSection_0'",Range=(LowerBound=(Type=Inclusive,Value=(Value=-1584800)),UpperBound=(Type=Exclusive,Value=(Value=1128000))),ForcedTime=(Value=-2147483648))))
+      Signature=F45600AB4FB459F80A1ABA94D3954362
+   End Object
+   Track="/Script/MovieSceneTracks.MovieScene3DAttachTrack'MovieScene3DAttachTrack_21'"
+End Object

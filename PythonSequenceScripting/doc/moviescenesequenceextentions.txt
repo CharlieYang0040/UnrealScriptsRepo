@@ -1,0 +1,820 @@
+unreal.MovieSceneSequenceExtensions
+class unreal.MovieSceneSequenceExtensions(outer: Object | None = None, name: Name | str = 'None')
+Bases: BlueprintFunctionLibrary
+
+Function library containing methods that should be hoisted onto UMovieSceneSequences for scripting purposes
+
+C++ Source:
+
+Plugin: SequencerScripting
+
+Module: SequencerScripting
+
+File: MovieSceneSequenceExtensions.h
+
+classmethod add_marked_frame(sequence, marked_frame) → int32
+Add Marked Frame deprecated: AddMarkedFrame is deprecated. Please use AddMarkedFrame that takes a time unit instead
+
+Parameters:
+sequence (MovieSceneSequence)
+
+marked_frame (MovieSceneMarkedFrame)
+
+Return type:
+int32
+
+classmethod add_marked_frame_to_sequence(sequence, marked_frame, time_unit=MovieSceneTimeUnit.DISPLAY_RATE) → int32
+Add a given user marked frame.
+
+A unique label will be generated if the marked frame label is empty
+
+InMarkedFrame: The given user marked frame to add *
+
+Parameters:
+sequence (MovieSceneSequence)
+
+marked_frame (MovieSceneMarkedFrame)
+
+time_unit (MovieSceneTimeUnit)
+
+Returns:
+The index to the newly added marked frame
+
+Return type:
+int32
+
+classmethod add_possessable(sequence, object_to_possess) → MovieSceneBindingProxy
+Add a new binding to this sequence that will possess the specified object
+
+Parameters:
+sequence (MovieSceneSequence) – The sequence to add a possessable to
+
+object_to_possess (Object) – The object that this sequence should possess when evaluating
+
+Returns:
+A unique identifier for the new binding
+
+Return type:
+MovieSceneBindingProxy
+
+classmethod add_root_folder_to_sequence(sequence, new_folder_name) → MovieSceneFolder
+Add a root folder to the given sequence
+
+Parameters:
+sequence (MovieSceneSequence) – The sequence to add a folder to
+
+new_folder_name (str) – The name to give the added folder
+
+Returns:
+The newly created folder
+
+Return type:
+MovieSceneFolder
+
+classmethod add_spawnable_from_class(sequence, class_to_spawn) → MovieSceneBindingProxy
+Add a new binding to this sequence that will spawn the specified object For level sequences this will make a custom binding of type UMovieSceneSpawnableActorBinding.
+
+Parameters:
+sequence (MovieSceneSequence) – The sequence to add to
+
+class_to_spawn (type(Class)) – A class or blueprint type to spawn for this binding
+
+Returns:
+A unique identifier for the new binding
+
+Return type:
+MovieSceneBindingProxy
+
+classmethod add_spawnable_from_instance(sequence, object_to_spawn) → MovieSceneBindingProxy
+Add a new binding to this sequence that will spawn the specified object. For level sequences this will make a custom binding of type UMovieSceneSpawnableActorBinding.
+
+Parameters:
+sequence (MovieSceneSequence) – The sequence to add to
+
+object_to_spawn (Object) – An object instance to use as a template for spawning
+
+Returns:
+A unique identifier for the new binding
+
+Return type:
+MovieSceneBindingProxy
+
+classmethod add_track(sequence, track_type) → MovieSceneTrack
+Add a new track of the specified type
+
+Parameters:
+sequence (MovieSceneSequence) – The sequence to use
+
+track_type (type(Class)) – A UMovieSceneTrack class type to create
+
+Returns:
+The newly created track, if successful
+
+Return type:
+MovieSceneTrack
+
+classmethod are_marked_frames_locked(sequence) → bool
+Are marked frames locked
+
+Parameters:
+sequence (MovieSceneSequence)
+
+Returns:
+Whether the movie scene marked frames are locked
+
+Return type:
+bool
+
+classmethod delete_marked_frame(sequence, delete_index) → None
+Delete the user marked frame by index.
+
+DeleteIndex: The index to the user marked frame to delete
+
+Parameters:
+sequence (MovieSceneSequence)
+
+delete_index (int32)
+
+classmethod delete_marked_frames(sequence) → None
+Delete all user marked frames
+
+Parameters:
+sequence (MovieSceneSequence)
+
+classmethod find_binding_by_id(sequence, binding_id) → MovieSceneBindingProxy
+Attempt to locate a binding in this sequence by its Id
+
+Parameters:
+sequence (MovieSceneSequence) – The sequence within which to find the binding
+
+binding_id (Guid) – The binding Id to look up
+
+Returns:
+A unique identifier for the binding, or invalid
+
+Return type:
+MovieSceneBindingProxy
+
+classmethod find_binding_by_name(sequence, name) → MovieSceneBindingProxy
+Attempt to locate a binding in this sequence by its name
+
+Parameters:
+sequence (MovieSceneSequence) – The sequence within which to find the binding
+
+name (str) – The display name of the binding to look up
+
+Returns:
+A unique identifier for the binding, or invalid
+
+Return type:
+MovieSceneBindingProxy
+
+classmethod find_marked_frame_by_frame_number(sequence, frame_number) → int32
+Find Marked Frame by Frame Number deprecated: FindMarkedFrameByFrameNumber is deprecated. Please use FindMarkedFrameByFrameNumber that takes a time unit instead
+
+Parameters:
+sequence (MovieSceneSequence)
+
+frame_number (FrameNumber)
+
+Return type:
+int32
+
+classmethod find_marked_frame_by_frame_number_in_sequence(sequence, frame_number, time_unit=MovieSceneTimeUnit.DISPLAY_RATE) → int32
+Find the user marked frame by frame number
+
+InFrameNumber: The frame number of the user marked frame to find
+
+Parameters:
+sequence (MovieSceneSequence)
+
+frame_number (FrameNumber)
+
+time_unit (MovieSceneTimeUnit)
+
+Return type:
+int32
+
+classmethod find_marked_frame_by_label(sequence, label) → int32
+Find the user marked frame by label
+
+InLabel: The label to the user marked frame to find
+
+Parameters:
+sequence (MovieSceneSequence)
+
+label (str)
+
+Return type:
+int32
+
+classmethod find_next_marked_frame(sequence, frame_number, forward) → int32
+Find Next Marked Frame deprecated: FindNextMarkedFrame is deprecated. Please use FindNextMarkedFrame that takes a time unit and defaults to display rate instead
+
+Parameters:
+sequence (MovieSceneSequence)
+
+frame_number (FrameNumber)
+
+forward (bool)
+
+Return type:
+int32
+
+classmethod find_next_marked_frame_in_sequence(sequence, frame_number, forward, time_unit=MovieSceneTimeUnit.DISPLAY_RATE) → int32
+Find the next/previous user marked frame from the given frame number
+
+InFrameNumber: The frame number to find the next/previous user marked frame from * bForward: Find forward from the given frame number.
+
+Parameters:
+sequence (MovieSceneSequence)
+
+frame_number (FrameNumber)
+
+forward (bool)
+
+time_unit (MovieSceneTimeUnit)
+
+Return type:
+int32
+
+classmethod find_tracks_by_exact_type(sequence, track_type) → Array[MovieSceneTrack]
+Find all tracks of the specified type, not allowing sub-classed types
+
+Parameters:
+sequence (MovieSceneSequence) – The sequence to use
+
+track_type (type(Class)) – A UMovieSceneTrack class type specifying the exact types of track to return
+
+Returns:
+An array containing any tracks that are exactly the same as the type specified
+
+Return type:
+Array[MovieSceneTrack]
+
+classmethod find_tracks_by_type(sequence, track_type) → Array[MovieSceneTrack]
+Find all tracks of the specified type
+
+Parameters:
+sequence (MovieSceneSequence) – The sequence to use
+
+track_type (type(Class)) – A UMovieSceneTrack class type specifying which types of track to return
+
+Returns:
+An array containing any tracks that match the type specified
+
+Return type:
+Array[MovieSceneTrack]
+
+classmethod get_binding_id(sequence, binding) → MovieSceneObjectBindingID
+Get the binding ID for a binding within a sequence. note:: The resulting binding is only valid when applied to properties within the same sequence as this binding. Use GetPortableBindingID for bindings which live in different sub-sequences.
+
+Parameters:
+sequence (MovieSceneSequence)
+
+binding (MovieSceneBindingProxy)
+
+Returns:
+The binding’s id
+
+Return type:
+MovieSceneObjectBindingID
+
+classmethod get_bindings(sequence) → Array[MovieSceneBindingProxy]
+Get all the bindings in this sequence
+
+Parameters:
+sequence (MovieSceneSequence) – The sequence to get bindings for
+
+Returns:
+An array of unique identifiers for all the bindings in this sequence
+
+Return type:
+Array[MovieSceneBindingProxy]
+
+classmethod get_clock_source(sequence) → UpdateClockSource
+Get the clock source for this sequence
+
+Parameters:
+sequence (MovieSceneSequence)
+
+Returns:
+The clock source for this sequence
+
+Return type:
+UpdateClockSource
+
+classmethod get_display_rate(sequence) → FrameRate
+Gets this sequence’s display rate
+
+Parameters:
+sequence (MovieSceneSequence) – The sequence to use
+
+Returns:
+The display rate that this sequence is displayed as
+
+Return type:
+FrameRate
+
+classmethod get_evaluation_type(sequence) → MovieSceneEvaluationType
+Get the evaluation type for this sequence
+
+Parameters:
+sequence (MovieSceneSequence)
+
+Returns:
+The evaluation type for this sequence
+
+Return type:
+MovieSceneEvaluationType
+
+classmethod get_marked_frames(sequence) → Array[MovieSceneMarkedFrame]
+Get Marked Frames deprecated: GetMarkedFrames is deprecated. Please use GetMarkedFrames that takes a time unit instead
+
+Parameters:
+sequence (MovieSceneSequence)
+
+Return type:
+Array[MovieSceneMarkedFrame]
+
+classmethod get_marked_frames_from_sequence(sequence, time_unit=MovieSceneTimeUnit.DISPLAY_RATE) → Array[MovieSceneMarkedFrame]
+Get the marked frames for this sequence
+
+Parameters:
+sequence (MovieSceneSequence)
+
+time_unit (MovieSceneTimeUnit)
+
+Returns:
+Return the user marked frames
+
+Return type:
+Array[MovieSceneMarkedFrame]
+
+classmethod get_movie_scene(sequence) → MovieScene
+Get this sequence’s movie scene data
+
+Parameters:
+sequence (MovieSceneSequence) – The sequence to use
+
+Returns:
+This sequence’s movie scene data object
+
+Return type:
+MovieScene
+
+classmethod get_playback_end(sequence) → int32
+Get playback end of this sequence in display rate resolution
+
+Parameters:
+sequence (MovieSceneSequence) – The sequence within which to get the playback end
+
+Returns:
+Playback end of this sequence
+
+Return type:
+int32
+
+classmethod get_playback_end_seconds(sequence) → float
+Get playback end of this sequence in seconds
+
+Parameters:
+sequence (MovieSceneSequence) – The sequence within which to get the playback end
+
+Returns:
+Playback end of this sequence
+
+Return type:
+float
+
+classmethod get_playback_range(sequence) → SequencerScriptingRange
+Get playback range of this sequence in display rate resolution
+
+Parameters:
+sequence (MovieSceneSequence) – The sequence within which to get the playback range
+
+Returns:
+Playback range of this sequence
+
+Return type:
+SequencerScriptingRange
+
+classmethod get_playback_start(sequence) → int32
+Get playback start of this sequence in display rate resolution
+
+Parameters:
+sequence (MovieSceneSequence) – The sequence within which to get the playback start
+
+Returns:
+Playback start of this sequence
+
+Return type:
+int32
+
+classmethod get_playback_start_seconds(sequence) → float
+Get playback start of this sequence in seconds
+
+Parameters:
+sequence (MovieSceneSequence) – The sequence within which to get the playback start
+
+Returns:
+Playback start of this sequence
+
+Return type:
+float
+
+classmethod get_portable_binding_id(root_sequence, destination_sequence, binding) → MovieSceneObjectBindingID
+Get a portable binding ID for a binding that resides in a different sequence to the one where this binding will be resolved. note:: This function must be used over GetBindingID when the target binding resides in different shots or sub-sequences. note:: Only unique instances of sequences within a root sequences are supported
+
+Parameters:
+root_sequence (MovieSceneSequence) – The root sequence that contains both the destination sequence (that will resolve the binding ID) and the target sequence that contains the actual binding
+
+destination_sequence (MovieSceneSequence) – The sequence that will own or resolve the resulting binding ID. For example, if the binding ID will be applied to a camera cut section pass the sequence that contains the camera cut track to this parameter.
+
+binding (MovieSceneBindingProxy)
+
+Returns:
+The binding’s id
+
+Return type:
+MovieSceneObjectBindingID
+
+classmethod get_possessables(sequence) → Array[MovieSceneBindingProxy]
+Get all the possessables in this sequence. It is understood for the purpose of this function that this means the bindings are not custom.
+
+Parameters:
+sequence (MovieSceneSequence) – The sequence to get possessables for
+
+Returns:
+Possessables in this sequence
+
+Return type:
+Array[MovieSceneBindingProxy]
+
+classmethod get_root_folders_in_sequence(sequence) → Array[MovieSceneFolder]
+Get the root folders in the provided sequence
+
+Parameters:
+sequence (MovieSceneSequence) – The sequence to retrieve folders from
+
+Returns:
+The folders contained within the given sequence
+
+Return type:
+Array[MovieSceneFolder]
+
+classmethod get_spawnables(sequence) → Array[MovieSceneBindingProxy]
+Get all the spawnables in this sequence. For Level Sequences, this includes bindings with binding type UMovieSceneSpawnableActorBinding.
+
+Parameters:
+sequence (MovieSceneSequence) – The sequence to get spawnables for
+
+Returns:
+Spawnables in this sequence
+
+Return type:
+Array[MovieSceneBindingProxy]
+
+classmethod get_tick_resolution(sequence) → FrameRate
+Gets this sequence’s tick resolution
+
+Parameters:
+sequence (MovieSceneSequence) – The sequence to use
+
+Returns:
+The tick resolution of the sequence, defining the smallest unit of time representable on this sequence
+
+Return type:
+FrameRate
+
+classmethod get_tracks(sequence) → Array[MovieSceneTrack]
+Get all tracks
+
+Parameters:
+sequence (MovieSceneSequence) – The sequence to use
+
+Returns:
+An array containing all tracks in this sequence
+
+Return type:
+Array[MovieSceneTrack]
+
+classmethod get_view_range_end(sequence) → double
+Get the sequence view range end in seconds
+
+Parameters:
+sequence (MovieSceneSequence)
+
+Returns:
+The view range end time in seconds for this sequence
+
+Return type:
+double
+
+classmethod get_view_range_start(sequence) → double
+Get the sequence view range start in seconds
+
+Parameters:
+sequence (MovieSceneSequence)
+
+Returns:
+The view range start time in seconds for this sequence
+
+Return type:
+double
+
+classmethod get_work_range_end(sequence) → double
+Get the sequence work range end in seconds
+
+Parameters:
+sequence (MovieSceneSequence)
+
+Returns:
+The work range end time in seconds for this sequence
+
+Return type:
+double
+
+classmethod get_work_range_start(sequence) → double
+Get the sequence work range start in seconds
+
+Parameters:
+sequence (MovieSceneSequence)
+
+Returns:
+The work range start time in seconds for this sequence
+
+Return type:
+double
+
+classmethod is_playback_range_locked(sequence) → bool
+Is playback ranged locked
+
+Parameters:
+sequence (MovieSceneSequence)
+
+Returns:
+Whether the movie scene playback range is locked
+
+Return type:
+bool
+
+classmethod is_read_only(sequence) → bool
+Is read only
+
+Parameters:
+sequence (MovieSceneSequence)
+
+Returns:
+Whether the movie scene is read only or not
+
+Return type:
+bool
+
+classmethod locate_bound_objects(sequence, binding, context) → Array[Object]
+Locate all the objects that correspond to the specified object ID, using the specified context
+
+Parameters:
+sequence (MovieSceneSequence) – The sequence to locate bound objects for
+
+binding (MovieSceneBindingProxy) – The object binding
+
+context (Object) – Optional context to use to find the required object
+
+Returns:
+An array of all bound objects
+
+Return type:
+Array[Object]
+
+classmethod make_range(sequence, start_frame, duration) → SequencerScriptingRange
+Make a new range for this sequence in its display rate
+
+Parameters:
+sequence (MovieSceneSequence) – The sequence within which to find the binding
+
+start_frame (int32) – The frame at which to start the range
+
+duration (int32) – The length of the range
+
+Returns:
+Specified sequencer range
+
+Return type:
+SequencerScriptingRange
+
+classmethod make_range_seconds(sequence, start_time, duration) → SequencerScriptingRange
+Make a new range for this sequence in seconds
+
+Parameters:
+sequence (MovieSceneSequence) – The sequence within which to find the binding
+
+start_time (float) – The time in seconds at which to start the range
+
+duration (float) – The length of the range in seconds
+
+Returns:
+Specified sequencer range
+
+Return type:
+SequencerScriptingRange
+
+classmethod remove_root_folder_from_sequence(sequence, folder) → None
+Remove a root folder from the given sequence. Will throw an exception if the specified folder is not valid or not a root folder.
+
+Parameters:
+sequence (MovieSceneSequence) – The sequence That the folder belongs to
+
+folder (MovieSceneFolder) – The folder to remove
+
+classmethod remove_track(sequence, track) → bool
+Removes a track
+
+Parameters:
+sequence (MovieSceneSequence) – The sequence to use
+
+track (MovieSceneTrack) – The track to remove
+
+Returns:
+Whether the track was successfully removed
+
+Return type:
+bool
+
+classmethod resolve_binding_id(root_sequence, object_binding_id) → MovieSceneBindingProxy
+Make a binding for the given binding ID
+
+Parameters:
+root_sequence (MovieSceneSequence) – The root sequence that contains the sequence
+
+object_binding_id (MovieSceneObjectBindingID)
+
+Returns:
+The new binding proxy
+
+Return type:
+MovieSceneBindingProxy
+
+classmethod set_clock_source(sequence, clock_source) → None
+Set the clock source for this sequence
+
+Parameters:
+sequence (MovieSceneSequence)
+
+clock_source (UpdateClockSource) – The clock source to set for this sequence
+
+classmethod set_display_rate(sequence, display_rate) → None
+Sets this sequence’s display rate
+
+Parameters:
+sequence (MovieSceneSequence) – The sequence to use
+
+display_rate (FrameRate) – The display rate that this sequence is displayed as
+
+classmethod set_evaluation_type(sequence, evaluation_type) → None
+Set the evaluation type for this sequence
+
+Parameters:
+sequence (MovieSceneSequence)
+
+evaluation_type (MovieSceneEvaluationType) – The evaluation type to set for this sequence
+
+classmethod set_marked_frame(sequence, mark_index, frame_number) → None
+Set Marked Frame deprecated: SetMarkedFrame is deprecated. Please use SetMarkedFrame that takes a time unit instead
+
+Parameters:
+sequence (MovieSceneSequence)
+
+mark_index (int32)
+
+frame_number (FrameNumber)
+
+classmethod set_marked_frame_in_sequence(sequence, mark_index, frame_number, time_unit=MovieSceneTimeUnit.DISPLAY_RATE) → None
+Sets the frame number for the given marked frame index. Does not maintain sort. Call SortMarkedFrames
+
+InMarkIndex: The given user marked frame index to edit * InFrameNumber: The frame number to set
+
+Parameters:
+sequence (MovieSceneSequence)
+
+mark_index (int32)
+
+frame_number (FrameNumber)
+
+time_unit (MovieSceneTimeUnit)
+
+classmethod set_marked_frames_locked(sequence, locked) → None
+Set marked frames locked
+
+bInLocked: Whether the movie scene marked frames should be locked
+
+Parameters:
+sequence (MovieSceneSequence)
+
+locked (bool)
+
+classmethod set_playback_end(sequence, end_frame) → None
+Set playback end of this sequence
+
+Parameters:
+sequence (MovieSceneSequence) – The sequence within which to set the playback end
+
+end_frame (int32) – The desired end frame for this sequence
+
+classmethod set_playback_end_seconds(sequence, end_time) → None
+Set playback end of this sequence in seconds
+
+Parameters:
+sequence (MovieSceneSequence) – The sequence within which to set the playback end
+
+end_time (float) – The desired end time in seconds for this sequence
+
+classmethod set_playback_range_locked(sequence, locked) → None
+Set playback range locked
+
+bInLocked: Whether the movie scene playback range should be locked
+
+Parameters:
+sequence (MovieSceneSequence)
+
+locked (bool)
+
+classmethod set_playback_start(sequence, start_frame) → None
+Set playback start of this sequence
+
+Parameters:
+sequence (MovieSceneSequence) – The sequence within which to set the playback start
+
+start_frame (int32) – The desired start frame for this sequence
+
+classmethod set_playback_start_seconds(sequence, start_time) → None
+Set playback start of this sequence in seconds
+
+Parameters:
+sequence (MovieSceneSequence) – The sequence within which to set the playback start
+
+start_time (float) – The desired start time in seconds for this sequence
+
+classmethod set_read_only(sequence, read_only) → None
+Set read only
+
+bInReadOnly: Whether the movie scene should be read only or not
+
+Parameters:
+sequence (MovieSceneSequence)
+
+read_only (bool)
+
+classmethod set_tick_resolution(sequence, tick_resolution) → None
+Sets this sequence’s tick resolution and migrates frame times
+
+Parameters:
+sequence (MovieSceneSequence) – The sequence to use
+
+tick_resolution (FrameRate) – The tick resolution of the sequence, defining the smallest unit of time representable on this sequence
+
+classmethod set_tick_resolution_directly(sequence, tick_resolution) → None
+Sets this sequence’s tick resolution directly without migrating frame times
+
+Parameters:
+sequence (MovieSceneSequence) – The sequence to use
+
+tick_resolution (FrameRate) – The tick resolution of the sequence, defining the smallest unit of time representable on this sequence
+
+classmethod set_view_range_end(sequence, end_time_in_seconds) → None
+Set the sequence view range end in seconds
+
+Parameters:
+sequence (MovieSceneSequence)
+
+end_time_in_seconds (double)
+
+classmethod set_view_range_start(sequence, start_time_in_seconds) → None
+Set the sequence view range start in seconds
+
+Parameters:
+sequence (MovieSceneSequence)
+
+start_time_in_seconds (double) – The desired view range start time in seconds for this sequence
+
+classmethod set_work_range_end(sequence, end_time_in_seconds) → None
+Set the sequence work range end in seconds
+
+Parameters:
+sequence (MovieSceneSequence)
+
+end_time_in_seconds (double)
+
+classmethod set_work_range_start(sequence, start_time_in_seconds) → None
+Set the sequence work range start in seconds
+
+Parameters:
+sequence (MovieSceneSequence)
+
+start_time_in_seconds (double) – The desired work range start time in seconds for this sequence
+
+classmethod sort_marked_frames(sequence) → None¶
+Sort the marked frames in chronological order
+
+Parameters:
+sequence (MovieSceneSequence)

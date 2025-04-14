@@ -1,0 +1,184 @@
+Begin Object Class=/Script/Sequencer.MovieSceneCopyableBinding Name="MovieSceneCopyableBinding_108" ExportPath="/Script/Sequencer.MovieSceneCopyableBinding'/Engine/Transient.MovieSceneCopyableBinding_108'"
+   Begin Object Class=/Script/MovieSceneTracks.MovieScene3DTransformTrack Name="MovieScene3DTransformTrack_6" ExportPath="/Script/MovieSceneTracks.MovieScene3DTransformTrack'/Engine/Transient.MovieSceneCopyableBinding_108:MovieScene3DTransformTrack_6'"
+      Begin Object Class=/Script/MovieSceneTracks.MovieScene3DTransformSection Name="MovieScene3DTransformSection_0" ExportPath="/Script/MovieSceneTracks.MovieScene3DTransformSection'/Engine/Transient.MovieSceneCopyableBinding_108:MovieScene3DTransformTrack_6.MovieScene3DTransformSection_0'"
+         Begin Object Class=/Script/MovieScene.MovieSceneBuiltInEasingFunction Name="EaseOutFunction" Archetype="/Script/MovieScene.MovieSceneBuiltInEasingFunction'/Script/MovieSceneTracks.Default__MovieScene3DTransformSection:EaseOutFunction'" ExportPath="/Script/MovieScene.MovieSceneBuiltInEasingFunction'/Engine/Transient.MovieSceneCopyableBinding_108:MovieScene3DTransformTrack_6.MovieScene3DTransformSection_0.EaseOutFunction'"
+         End Object
+         Begin Object Class=/Script/MovieScene.MovieSceneBuiltInEasingFunction Name="EaseInFunction" Archetype="/Script/MovieScene.MovieSceneBuiltInEasingFunction'/Script/MovieSceneTracks.Default__MovieScene3DTransformSection:EaseInFunction'" ExportPath="/Script/MovieScene.MovieSceneBuiltInEasingFunction'/Engine/Transient.MovieSceneCopyableBinding_108:MovieScene3DTransformTrack_6.MovieScene3DTransformSection_0.EaseInFunction'"
+         End Object
+      End Object
+   End Object
+   Begin Object Class=/Script/MovieScene.MovieSceneSpawnTrack Name="MovieSceneSpawnTrack_26" ExportPath="/Script/MovieScene.MovieSceneSpawnTrack'/Engine/Transient.MovieSceneCopyableBinding_108:MovieSceneSpawnTrack_26'"
+      Begin Object Class=/Script/MovieScene.MovieSceneSpawnSection Name="MovieSceneSpawnSection_0" ExportPath="/Script/MovieScene.MovieSceneSpawnSection'/Engine/Transient.MovieSceneCopyableBinding_108:MovieSceneSpawnTrack_26.MovieSceneSpawnSection_0'"
+         Begin Object Class=/Script/MovieScene.MovieSceneBuiltInEasingFunction Name="EaseOutFunction" Archetype="/Script/MovieScene.MovieSceneBuiltInEasingFunction'/Script/MovieScene.Default__MovieSceneSpawnSection:EaseOutFunction'" ExportPath="/Script/MovieScene.MovieSceneBuiltInEasingFunction'/Engine/Transient.MovieSceneCopyableBinding_108:MovieSceneSpawnTrack_26.MovieSceneSpawnSection_0.EaseOutFunction'"
+         End Object
+         Begin Object Class=/Script/MovieScene.MovieSceneBuiltInEasingFunction Name="EaseInFunction" Archetype="/Script/MovieScene.MovieSceneBuiltInEasingFunction'/Script/MovieScene.Default__MovieSceneSpawnSection:EaseInFunction'" ExportPath="/Script/MovieScene.MovieSceneBuiltInEasingFunction'/Engine/Transient.MovieSceneCopyableBinding_108:MovieSceneSpawnTrack_26.MovieSceneSpawnSection_0.EaseInFunction'"
+         End Object
+      End Object
+   End Object
+   Begin Object Class=/Script/MovieSceneTracks.MovieScene3DAttachTrack Name="MovieScene3DAttachTrack_23" ExportPath="/Script/MovieSceneTracks.MovieScene3DAttachTrack'/Engine/Transient.MovieSceneCopyableBinding_108:MovieScene3DAttachTrack_23'"
+      Begin Object Class=/Script/MovieSceneTracks.MovieScene3DAttachSection Name="MovieScene3DAttachSection_0" ExportPath="/Script/MovieSceneTracks.MovieScene3DAttachSection'/Engine/Transient.MovieSceneCopyableBinding_108:MovieScene3DAttachTrack_23.MovieScene3DAttachSection_0'"
+         Begin Object Class=/Script/MovieScene.MovieSceneBuiltInEasingFunction Name="EaseOutFunction" Archetype="/Script/MovieScene.MovieSceneBuiltInEasingFunction'/Script/MovieSceneTracks.Default__MovieScene3DAttachSection:EaseOutFunction'" ExportPath="/Script/MovieScene.MovieSceneBuiltInEasingFunction'/Engine/Transient.MovieSceneCopyableBinding_108:MovieScene3DAttachTrack_23.MovieScene3DAttachSection_0.EaseOutFunction'"
+         End Object
+         Begin Object Class=/Script/MovieScene.MovieSceneBuiltInEasingFunction Name="EaseInFunction" Archetype="/Script/MovieScene.MovieSceneBuiltInEasingFunction'/Script/MovieSceneTracks.Default__MovieScene3DAttachSection:EaseInFunction'" ExportPath="/Script/MovieScene.MovieSceneBuiltInEasingFunction'/Engine/Transient.MovieSceneCopyableBinding_108:MovieScene3DAttachTrack_23.MovieScene3DAttachSection_0.EaseInFunction'"
+         End Object
+      End Object
+   End Object
+   Begin Object Name="MovieScene3DTransformTrack_6" ExportPath="/Script/MovieSceneTracks.MovieScene3DTransformTrack'/Engine/Transient.MovieSceneCopyableBinding_108:MovieScene3DTransformTrack_6'"
+      Begin Object Name="MovieScene3DTransformSection_0" ExportPath="/Script/MovieSceneTracks.MovieScene3DTransformSection'/Engine/Transient.MovieSceneCopyableBinding_108:MovieScene3DTransformTrack_6.MovieScene3DTransformSection_0'"
+         Begin Object Name="EaseOutFunction" ExportPath="/Script/MovieScene.MovieSceneBuiltInEasingFunction'/Engine/Transient.MovieSceneCopyableBinding_108:MovieScene3DTransformTrack_6.MovieScene3DTransformSection_0.EaseOutFunction'"
+         End Object
+         Begin Object Name="EaseInFunction" ExportPath="/Script/MovieScene.MovieSceneBuiltInEasingFunction'/Engine/Transient.MovieSceneCopyableBinding_108:MovieScene3DTransformTrack_6.MovieScene3DTransformSection_0.EaseInFunction'"
+         End Object
+         Translation(0)=(DefaultValue=50.913096,TickResolution=(Numerator=24000))
+         Translation(1)=(DefaultValue=-78.547841,TickResolution=(Numerator=24000))
+         Translation(2)=(DefaultValue=-15.893131,TickResolution=(Numerator=24000))
+         Rotation(0)=(DefaultValue=-66.081228,TickResolution=(Numerator=24000))
+         Rotation(1)=(DefaultValue=7.403180,TickResolution=(Numerator=24000))
+         Rotation(2)=(DefaultValue=116.765350,TickResolution=(Numerator=24000))
+         Scale(0)=(TickResolution=(Numerator=24000))
+         Scale(1)=(TickResolution=(Numerator=24000))
+         Scale(2)=(TickResolution=(Numerator=24000))
+         Easing=(EaseIn=MovieSceneBuiltInEasingFunction'MovieSceneCopyableBinding_108:MovieScene3DTransformTrack_6.MovieScene3DTransformSection_0.EaseInFunction',EaseOut=MovieSceneBuiltInEasingFunction'MovieSceneCopyableBinding_108:MovieScene3DTransformTrack_6.MovieScene3DTransformSection_0.EaseOutFunction')
+         SectionRange=Open:0:Open:0
+         Signature=9C9674984391F8A59BDDC9BDE23A658A
+      End Object
+      Sections(0)="/Script/MovieSceneTracks.MovieScene3DTransformSection'MovieScene3DTransformSection_0'"
+      EvaluationFieldGuid=2F7CF96042372ECE1D02A78895D7A269
+      EvaluationField=(Entries=((Section="/Script/MovieSceneTracks.MovieScene3DTransformSection'MovieScene3DTransformSection_0'",ForcedTime=(Value=-2147483648))))
+      Signature=2F7CF96042372ECE1D02A78895D7A269
+   End Object
+   Begin Object Name="MovieSceneSpawnTrack_26" ExportPath="/Script/MovieScene.MovieSceneSpawnTrack'/Engine/Transient.MovieSceneCopyableBinding_108:MovieSceneSpawnTrack_26'"
+      Begin Object Name="MovieSceneSpawnSection_0" ExportPath="/Script/MovieScene.MovieSceneSpawnSection'/Engine/Transient.MovieSceneCopyableBinding_108:MovieSceneSpawnTrack_26.MovieSceneSpawnSection_0'"
+         Begin Object Name="EaseOutFunction" ExportPath="/Script/MovieScene.MovieSceneBuiltInEasingFunction'/Engine/Transient.MovieSceneCopyableBinding_108:MovieSceneSpawnTrack_26.MovieSceneSpawnSection_0.EaseOutFunction'"
+         End Object
+         Begin Object Name="EaseInFunction" ExportPath="/Script/MovieScene.MovieSceneBuiltInEasingFunction'/Engine/Transient.MovieSceneCopyableBinding_108:MovieSceneSpawnTrack_26.MovieSceneSpawnSection_0.EaseInFunction'"
+         End Object
+         Easing=(EaseIn=MovieSceneBuiltInEasingFunction'MovieSceneCopyableBinding_108:MovieSceneSpawnTrack_26.MovieSceneSpawnSection_0.EaseInFunction',EaseOut=MovieSceneBuiltInEasingFunction'MovieSceneCopyableBinding_108:MovieSceneSpawnTrack_26.MovieSceneSpawnSection_0.EaseOutFunction')
+         Signature=D08F5DBA4C686FDCA8540FAC319BD317
+      End Object
+      Sections(0)="/Script/MovieScene.MovieSceneSpawnSection'MovieSceneSpawnSection_0'"
+      ObjectGuid=380DCD2A487D490CAE92B7A2F48F4357
+      EvaluationFieldGuid=8B6AAEA6454D63139245B081AD65B2EF
+      EvaluationField=(Entries=((Section="/Script/MovieScene.MovieSceneSpawnSection'MovieSceneSpawnSection_0'",ForcedTime=(Value=-2147483648))))
+      Signature=8B6AAEA6454D63139245B081AD65B2EF
+   End Object
+   Begin Object Name="MovieScene3DAttachTrack_23" ExportPath="/Script/MovieSceneTracks.MovieScene3DAttachTrack'/Engine/Transient.MovieSceneCopyableBinding_108:MovieScene3DAttachTrack_23'"
+      Begin Object Name="MovieScene3DAttachSection_0" ExportPath="/Script/MovieSceneTracks.MovieScene3DAttachSection'/Engine/Transient.MovieSceneCopyableBinding_108:MovieScene3DAttachTrack_23.MovieScene3DAttachSection_0'"
+         Begin Object Name="EaseOutFunction" ExportPath="/Script/MovieScene.MovieSceneBuiltInEasingFunction'/Engine/Transient.MovieSceneCopyableBinding_108:MovieScene3DAttachTrack_23.MovieScene3DAttachSection_0.EaseOutFunction'"
+         End Object
+         Begin Object Name="EaseInFunction" ExportPath="/Script/MovieScene.MovieSceneBuiltInEasingFunction'/Engine/Transient.MovieSceneCopyableBinding_108:MovieScene3DAttachTrack_23.MovieScene3DAttachSection_0.EaseInFunction'"
+         End Object
+         AttachSocketName="Bip001-Neck"
+         AttachComponentName="SkeletalMeshComponent0"
+         ConstraintBindingID=(Guid=A4F64ECC4E418B6CDBA7DF8D0F1272E9,ResolveParentIndex=0)
+         Easing=(EaseIn=MovieSceneBuiltInEasingFunction'MovieSceneCopyableBinding_108:MovieScene3DAttachTrack_23.MovieScene3DAttachSection_0.EaseInFunction',EaseOut=MovieSceneBuiltInEasingFunction'MovieSceneCopyableBinding_108:MovieScene3DAttachTrack_23.MovieScene3DAttachSection_0.EaseOutFunction')
+         SectionRange=Inclusive:-1584800:Exclusive:1128000
+         Signature=4873158040382C52E7E132A5C750CE74
+      End Object
+      ConstraintSections(0)="/Script/MovieSceneTracks.MovieScene3DAttachSection'MovieScene3DAttachSection_0'"
+      EvaluationFieldGuid=FAB758FA42439D3A7DF04EAA2AE9A823
+      EvaluationField=(Entries=((Section="/Script/MovieSceneTracks.MovieScene3DAttachSection'MovieScene3DAttachSection_0'",Range=(LowerBound=(Type=Inclusive,Value=(Value=-1584800)),UpperBound=(Type=Exclusive,Value=(Value=1128000))),ForcedTime=(Value=-2147483648))))
+      Signature=FAB758FA42439D3A7DF04EAA2AE9A823
+   End Object
+   SpawnableObjectTemplates(0)="/Script/Engine.SpotLight'/Game/Cinematic/Sequnce/Avatar/Shot/SUB/LIT/hc/Lit_sub_avatar_10_All_Result_Legend1_01.Lit_sub_avatar_10_All_Result_Legend1_01:MovieScene_0.SpotLight_6'"
+   NumSpawnableObjectTemplates=1
+   Tracks(0)="/Script/MovieSceneTracks.MovieScene3DAttachTrack'MovieScene3DAttachTrack_23'"
+   Tracks(1)="/Script/MovieScene.MovieSceneSpawnTrack'MovieSceneSpawnTrack_26'"
+   Tracks(2)="/Script/MovieSceneTracks.MovieScene3DTransformTrack'MovieScene3DTransformTrack_6'"
+   Binding=(ObjectGuid=6895EFC1494F5E8B4F46F497B6BB0215,BindingName="SpotLight_GM_face_7",SortingOrder=28)
+   Possessable=(Guid=6895EFC1494F5E8B4F46F497B6BB0215,Name="SpotLight_DM_face_08",PossessedObjectClass="/Script/Engine.SpotLight")
+   NumCustomBindings=1
+End Object
+Begin Object Class=/Script/MovieSceneTracks.MovieSceneSpawnableActorBinding Name="MovieSceneSpawnableActorBinding_17" ExportPath="/Script/MovieSceneTracks.MovieSceneSpawnableActorBinding'/Game/Cinematic/Sequnce/Avatar/Shot/SUB/LIT/hc/Lit_sub_avatar_10_All_Result_Legend1_01.Lit_sub_avatar_10_All_Result_Legend1_01:MovieScene_0.MovieSceneSpawnableActorBinding_17'"
+End Object
+Begin Object Class=/Script/Engine.SpotLight Name="SpotLight_6" ExportPath="/Script/Engine.SpotLight'/Game/Cinematic/Sequnce/Avatar/Shot/SUB/LIT/hc/Lit_sub_avatar_10_All_Result_Legend1_01.Lit_sub_avatar_10_All_Result_Legend1_01:MovieScene_0.SpotLight_6'"
+   Begin Object Class=/Script/Engine.SpotLightComponent Name="LightComponent0" Archetype="/Script/Engine.SpotLightComponent'/Script/Engine.Default__SpotLight:LightComponent0'" ExportPath="/Script/Engine.SpotLightComponent'/Game/Cinematic/Sequnce/Avatar/Shot/SUB/LIT/hc/Lit_sub_avatar_10_All_Result_Legend1_01.Lit_sub_avatar_10_All_Result_Legend1_01:MovieScene_0.SpotLight_6.LightComponent0'"
+   End Object
+   Begin Object Class=/Script/Engine.ArrowComponent Name="ArrowComponent0" Archetype="/Script/Engine.ArrowComponent'/Script/Engine.Default__SpotLight:ArrowComponent0'" ExportPath="/Script/Engine.ArrowComponent'/Game/Cinematic/Sequnce/Avatar/Shot/SUB/LIT/hc/Lit_sub_avatar_10_All_Result_Legend1_01.Lit_sub_avatar_10_All_Result_Legend1_01:MovieScene_0.SpotLight_6.ArrowComponent0'"
+   End Object
+   Begin Object Name="LightComponent0" ExportPath="/Script/Engine.SpotLightComponent'/Game/Cinematic/Sequnce/Avatar/Shot/SUB/LIT/hc/Lit_sub_avatar_10_All_Result_Legend1_01.Lit_sub_avatar_10_All_Result_Legend1_01:MovieScene_0.SpotLight_6.LightComponent0'"
+      IntensityUnits=EV
+      AttenuationRadius=238.220535
+      LightingChannels=(bChannel0=False,bChannel1=True)
+      Intensity=4.500000
+      LightColor=(B=177,G=210,R=255,A=255)
+      RelativeLocation=(X=64.979428,Y=-106.526609,Z=53.236080)
+      RelativeRotation=(Pitch=-31.608733,Yaw=118.834425,Roll=277.806860)
+      Mobility=Movable
+   End Object
+   Begin Object Name="ArrowComponent0" ExportPath="/Script/Engine.ArrowComponent'/Game/Cinematic/Sequnce/Avatar/Shot/SUB/LIT/hc/Lit_sub_avatar_10_All_Result_Legend1_01.Lit_sub_avatar_10_All_Result_Legend1_01:MovieScene_0.SpotLight_6.ArrowComponent0'"
+      ArrowColor=(B=177,G=210,R=255,A=255)
+      AttachParent="LightComponent0"
+   End Object
+   SpotLightComponent="LightComponent0"
+   ArrowComponent="ArrowComponent0"
+   LightComponent="LightComponent0"
+   bReplayRewindable=True
+   SpawnCollisionHandlingMethod=AlwaysSpawn
+   RootComponent="LightComponent0"
+   ActorLabel="SpotLight_DM_face_02"
+End Object
+Begin Object Class=/Script/Sequencer.MovieSceneCopyableBinding Name="MovieSceneCopyableBinding_109" ExportPath="/Script/Sequencer.MovieSceneCopyableBinding'/Engine/Transient.MovieSceneCopyableBinding_109'"
+   Begin Object Class=/Script/MovieSceneTracks.MovieSceneColorTrack Name="MovieSceneColorTrack_23" ExportPath="/Script/MovieSceneTracks.MovieSceneColorTrack'/Engine/Transient.MovieSceneCopyableBinding_109:MovieSceneColorTrack_23'"
+      Begin Object Class=/Script/MovieSceneTracks.MovieSceneColorSection Name="MovieSceneColorSection_0" ExportPath="/Script/MovieSceneTracks.MovieSceneColorSection'/Engine/Transient.MovieSceneCopyableBinding_109:MovieSceneColorTrack_23.MovieSceneColorSection_0'"
+         Begin Object Class=/Script/MovieScene.MovieSceneBuiltInEasingFunction Name="EaseOutFunction" Archetype="/Script/MovieScene.MovieSceneBuiltInEasingFunction'/Script/MovieSceneTracks.Default__MovieSceneColorSection:EaseOutFunction'" ExportPath="/Script/MovieScene.MovieSceneBuiltInEasingFunction'/Engine/Transient.MovieSceneCopyableBinding_109:MovieSceneColorTrack_23.MovieSceneColorSection_0.EaseOutFunction'"
+         End Object
+         Begin Object Class=/Script/MovieScene.MovieSceneBuiltInEasingFunction Name="EaseInFunction" Archetype="/Script/MovieScene.MovieSceneBuiltInEasingFunction'/Script/MovieSceneTracks.Default__MovieSceneColorSection:EaseInFunction'" ExportPath="/Script/MovieScene.MovieSceneBuiltInEasingFunction'/Engine/Transient.MovieSceneCopyableBinding_109:MovieSceneColorTrack_23.MovieSceneColorSection_0.EaseInFunction'"
+         End Object
+      End Object
+   End Object
+   Begin Object Class=/Script/MovieSceneTracks.MovieSceneFloatTrack Name="MovieSceneFloatTrack_23" ExportPath="/Script/MovieSceneTracks.MovieSceneFloatTrack'/Engine/Transient.MovieSceneCopyableBinding_109:MovieSceneFloatTrack_23'"
+      Begin Object Class=/Script/MovieSceneTracks.MovieSceneFloatSection Name="MovieSceneFloatSection_0" ExportPath="/Script/MovieSceneTracks.MovieSceneFloatSection'/Engine/Transient.MovieSceneCopyableBinding_109:MovieSceneFloatTrack_23.MovieSceneFloatSection_0'"
+         Begin Object Class=/Script/MovieScene.MovieSceneBuiltInEasingFunction Name="EaseOutFunction" Archetype="/Script/MovieScene.MovieSceneBuiltInEasingFunction'/Script/MovieSceneTracks.Default__MovieSceneFloatSection:EaseOutFunction'" ExportPath="/Script/MovieScene.MovieSceneBuiltInEasingFunction'/Engine/Transient.MovieSceneCopyableBinding_109:MovieSceneFloatTrack_23.MovieSceneFloatSection_0.EaseOutFunction'"
+         End Object
+         Begin Object Class=/Script/MovieScene.MovieSceneBuiltInEasingFunction Name="EaseInFunction" Archetype="/Script/MovieScene.MovieSceneBuiltInEasingFunction'/Script/MovieSceneTracks.Default__MovieSceneFloatSection:EaseInFunction'" ExportPath="/Script/MovieScene.MovieSceneBuiltInEasingFunction'/Engine/Transient.MovieSceneCopyableBinding_109:MovieSceneFloatTrack_23.MovieSceneFloatSection_0.EaseInFunction'"
+         End Object
+      End Object
+   End Object
+   Begin Object Name="MovieSceneColorTrack_23" ExportPath="/Script/MovieSceneTracks.MovieSceneColorTrack'/Engine/Transient.MovieSceneCopyableBinding_109:MovieSceneColorTrack_23'"
+      Begin Object Name="MovieSceneColorSection_0" ExportPath="/Script/MovieSceneTracks.MovieSceneColorSection'/Engine/Transient.MovieSceneCopyableBinding_109:MovieSceneColorTrack_23.MovieSceneColorSection_0'"
+         Begin Object Name="EaseOutFunction" ExportPath="/Script/MovieScene.MovieSceneBuiltInEasingFunction'/Engine/Transient.MovieSceneCopyableBinding_109:MovieSceneColorTrack_23.MovieSceneColorSection_0.EaseOutFunction'"
+         End Object
+         Begin Object Name="EaseInFunction" ExportPath="/Script/MovieScene.MovieSceneBuiltInEasingFunction'/Engine/Transient.MovieSceneCopyableBinding_109:MovieSceneColorTrack_23.MovieSceneColorSection_0.EaseInFunction'"
+         End Object
+         RedCurve=(DefaultValue=1.000000,bHasDefaultValue=True,TickResolution=(Numerator=24000))
+         GreenCurve=(DefaultValue=0.644480,bHasDefaultValue=True,TickResolution=(Numerator=24000))
+         BlueCurve=(DefaultValue=0.439657,bHasDefaultValue=True,TickResolution=(Numerator=24000))
+         AlphaCurve=(DefaultValue=1.000000,bHasDefaultValue=True,TickResolution=(Numerator=24000))
+         Easing=(EaseIn=MovieSceneBuiltInEasingFunction'MovieSceneCopyableBinding_109:MovieSceneColorTrack_23.MovieSceneColorSection_0.EaseInFunction',EaseOut=MovieSceneBuiltInEasingFunction'MovieSceneCopyableBinding_109:MovieSceneColorTrack_23.MovieSceneColorSection_0.EaseOutFunction')
+         SectionRange=Open:0:Open:0
+         Signature=4A597D4744B683A4D2A3CA9E06CFDB87
+      End Object
+      UniqueTrackName="LightColor"
+      PropertyBinding=(PropertyName="LightColor",PropertyPath="LightColor",bCanUseClassLookup=True)
+      Sections(0)="/Script/MovieSceneTracks.MovieSceneColorSection'MovieSceneColorSection_0'"
+      DisplayName=NSLOCTEXT("UObjectDisplayNames", "LightComponentBase:LightColor", "Light Color")
+      EvaluationFieldGuid=2189BB834DCE92146FE99B82F380F7F7
+      EvaluationField=(Entries=((Section="/Script/MovieSceneTracks.MovieSceneColorSection'MovieSceneColorSection_0'",ForcedTime=(Value=-2147483648))))
+      Signature=2189BB834DCE92146FE99B82F380F7F7
+   End Object
+   Begin Object Name="MovieSceneFloatTrack_23" ExportPath="/Script/MovieSceneTracks.MovieSceneFloatTrack'/Engine/Transient.MovieSceneCopyableBinding_109:MovieSceneFloatTrack_23'"
+      Begin Object Name="MovieSceneFloatSection_0" ExportPath="/Script/MovieSceneTracks.MovieSceneFloatSection'/Engine/Transient.MovieSceneCopyableBinding_109:MovieSceneFloatTrack_23.MovieSceneFloatSection_0'"
+         Begin Object Name="EaseOutFunction" ExportPath="/Script/MovieScene.MovieSceneBuiltInEasingFunction'/Engine/Transient.MovieSceneCopyableBinding_109:MovieSceneFloatTrack_23.MovieSceneFloatSection_0.EaseOutFunction'"
+         End Object
+         Begin Object Name="EaseInFunction" ExportPath="/Script/MovieScene.MovieSceneBuiltInEasingFunction'/Engine/Transient.MovieSceneCopyableBinding_109:MovieSceneFloatTrack_23.MovieSceneFloatSection_0.EaseInFunction'"
+         End Object
+         FloatCurve=(DefaultValue=4.500000,bHasDefaultValue=True,TickResolution=(Numerator=24000))
+         Easing=(EaseIn=MovieSceneBuiltInEasingFunction'MovieSceneCopyableBinding_109:MovieSceneFloatTrack_23.MovieSceneFloatSection_0.EaseInFunction',EaseOut=MovieSceneBuiltInEasingFunction'MovieSceneCopyableBinding_109:MovieSceneFloatTrack_23.MovieSceneFloatSection_0.EaseOutFunction')
+         SectionRange=Open:0:Open:0
+         Signature=C77EFCD24F1E8A5C564B609BC8F04703
+      End Object
+      UniqueTrackName="Intensity"
+      PropertyBinding=(PropertyName="Intensity",PropertyPath="Intensity",bCanUseClassLookup=True)
+      Sections(0)="/Script/MovieSceneTracks.MovieSceneFloatSection'MovieSceneFloatSection_0'"
+      DisplayName=NSLOCTEXT("UObjectDisplayNames", "LightComponentBase:Intensity", "Intensity")
+      EvaluationFieldGuid=FB57615E4325530681A4CF9EFB8E8924
+      EvaluationField=(Entries=((Section="/Script/MovieSceneTracks.MovieSceneFloatSection'MovieSceneFloatSection_0'",ForcedTime=(Value=-2147483648))))
+      Signature=FB57615E4325530681A4CF9EFB8E8924
+   End Object
+   Tracks(0)="/Script/MovieSceneTracks.MovieSceneFloatTrack'MovieSceneFloatTrack_23'"
+   Tracks(1)="/Script/MovieSceneTracks.MovieSceneColorTrack'MovieSceneColorTrack_23'"
+   Binding=(ObjectGuid=3DC5A496417783EF08581B856AA28A36,BindingName="LightComponent0",SortingOrder=29)
+   Possessable=(Guid=3DC5A496417783EF08581B856AA28A36,Name="LightComponent0",PossessedObjectClass="/Script/Engine.SpotLightComponent",ParentGuid=6895EFC1494F5E8B4F46F497B6BB0215)
+   BoundObjectNames(0)="LightComponent0"
+End Object

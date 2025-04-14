@@ -1,0 +1,405 @@
+unreal.LevelSequenceEditorBlueprintLibrary
+class unreal.LevelSequenceEditorBlueprintLibrary(outer: Object | None = None, name: Name | str = 'None')
+Bases: BlueprintFunctionLibrary
+
+Level Sequence Editor Blueprint Library
+
+C++ Source:
+
+Plugin: LevelSequenceEditor
+
+Module: LevelSequenceEditor
+
+File: LevelSequenceEditorBlueprintLibrary.h
+
+classmethod close_level_sequence() → None
+Close
+
+classmethod delete_color_for_channels(class_) → str
+Delete Color for Channels deprecated: Use USequencerCurveEditorObject::DeleteColorForChannels
+
+Parameters:
+class (type(Class))
+
+Returns:
+identifier (str):
+
+Return type:
+str
+
+classmethod empty_selection() → None
+Empties the current selection.
+
+classmethod focus_level_sequence(sub_section) → None
+Focus/view the sequence associated to the given sub sequence section.
+
+Parameters:
+sub_section (MovieSceneSubSection)
+
+classmethod focus_parent_sequence() → None
+Focus/view the parent sequence, popping out of the current sub sequence section.
+
+classmethod force_update() → None
+Force sequencer evaluation and UI update immediately
+
+classmethod get_bound_objects(object_binding) → Array[Object]
+Get the object bound to the given binding ID with the current level sequence editor
+
+Parameters:
+object_binding (MovieSceneObjectBindingID)
+
+Return type:
+Array[Object]
+
+classmethod get_channels_with_selected_keys() → Array[SequencerChannelProxy]
+Gets the channel with selected keys.
+
+Return type:
+Array[SequencerChannelProxy]
+
+classmethod get_current_level_sequence() → LevelSequence
+Get the currently opened root level sequence asset
+
+Return type:
+LevelSequence
+
+classmethod get_current_local_time() → int32
+Get Current Local Time deprecated: Use GetCurrentLocalTime that returns a FMovieSceneSequencePlaybackParams
+
+Return type:
+int32
+
+classmethod get_current_time() → int32
+Get Current Time deprecated: Use GetCurrentTime that returns a FMovieSceneSequencePlaybackParams
+
+Return type:
+int32
+
+classmethod get_custom_color_for_channel(class_, identifier) → LinearColor
+Get Custom Color for Channel deprecated: Use USequencerCurveEditorObject::HasCustomColorForChannel
+
+Parameters:
+class (type(Class))
+
+identifier (str)
+
+Return type:
+LinearColor
+
+classmethod get_focused_level_sequence() → LevelSequence
+Get the currently focused/viewed level sequence asset if there is a hierarchy of sequences.
+
+Return type:
+LevelSequence
+
+classmethod get_global_position(time_unit=MovieSceneTimeUnit.DISPLAY_RATE) → MovieSceneSequencePlaybackParams
+Get the current global playhead position
+
+Parameters:
+time_unit (MovieSceneTimeUnit)
+
+Return type:
+MovieSceneSequencePlaybackParams
+
+classmethod get_local_position(time_unit=MovieSceneTimeUnit.DISPLAY_RATE) → MovieSceneSequencePlaybackParams
+Get the current local playhead position
+
+Parameters:
+time_unit (MovieSceneTimeUnit)
+
+Return type:
+MovieSceneSequencePlaybackParams
+
+classmethod get_loop_mode() → SequencerLoopMode
+Get loop mode (note this is a per user preference)
+
+Return type:
+SequencerLoopMode
+
+classmethod get_playback_speed() → float
+Get playback speed of the current level sequence
+
+Return type:
+float
+
+classmethod get_selected_bindings() → Array[MovieSceneBindingProxy]
+Gets the currently selected object bindings
+
+Return type:
+Array[MovieSceneBindingProxy]
+
+classmethod get_selected_channels() → Array[SequencerChannelProxy]
+Gets the currently selected channels.
+
+Return type:
+Array[SequencerChannelProxy]
+
+classmethod get_selected_folders() → Array[MovieSceneFolder]
+Gets the currently selected folders.
+
+Return type:
+Array[MovieSceneFolder]
+
+classmethod get_selected_keys(channel_proxy) → Array[int32]
+Gets the selected key indices with this channel
+
+Parameters:
+channel_proxy (SequencerChannelProxy)
+
+Return type:
+Array[int32]
+
+classmethod get_selected_sections() → Array[MovieSceneSection]
+Gets the currently selected sections.
+
+Return type:
+Array[MovieSceneSection]
+
+classmethod get_selected_tracks() → Array[MovieSceneTrack]
+Gets the currently selected tracks.
+
+Return type:
+Array[MovieSceneTrack]
+
+classmethod get_selection_range_end() → int32
+Get the selection range end frame.
+
+Return type:
+int32
+
+classmethod get_selection_range_start() → int32
+Get the selection range start frame.
+
+Return type:
+int32
+
+classmethod get_sub_sequence_hierarchy() → Array[MovieSceneSubSection]
+Get the current sub section hierarchy from the current sequence to the section associated with the focused sequence.
+
+Return type:
+Array[MovieSceneSubSection]
+
+classmethod get_track_filter_names() → Array[Text]
+Gets all the available track filter names
+
+Return type:
+Array[Text]
+
+classmethod has_custom_color_for_channel(class_, identifier) → bool
+Has Custom Color for Channel deprecated: Use USequencerCurveEditorObject::HasCustomColorForChannel
+
+Parameters:
+class (type(Class))
+
+identifier (str)
+
+Return type:
+bool
+
+classmethod is_camera_cut_locked_to_viewport() → bool
+Check whether the lock for the viewport to the camera cuts is enabled.
+
+Return type:
+bool
+
+classmethod is_level_sequence_locked() → bool
+Check whether the current level sequence and its descendants are locked for editing.
+
+Return type:
+bool
+
+classmethod is_playing() → bool
+Check whether the sequence is actively playing.
+
+Return type:
+bool
+
+classmethod is_track_filter_active(track_filter_name) → bool
+Gets whether the specified track filter is on/off
+
+Parameters:
+track_filter_name (Text)
+
+Return type:
+bool
+
+classmethod is_track_filter_enabled(track_filter_name) → bool
+Is Track Filter Enabled
+
+Parameters:
+track_filter_name (Text)
+
+Return type:
+bool
+
+classmethod open_level_sequence(level_sequence) → bool
+Open a level sequence asset
+
+Parameters:
+level_sequence (LevelSequence)
+
+Return type:
+bool
+
+classmethod pause() → None
+Pause the current level sequence
+
+classmethod play() → None
+Play the current level sequence
+
+classmethod play_to(playback_params, time_unit=MovieSceneTimeUnit.DISPLAY_RATE) → None
+Play from the current time to the requested time in frames
+
+Parameters:
+playback_params (MovieSceneSequencePlaybackParams)
+
+time_unit (MovieSceneTimeUnit)
+
+classmethod refresh_current_level_sequence() → None
+Refresh Sequencer UI on next tick
+
+classmethod select_bindings(object_bindings) → None
+Select bindings
+
+Parameters:
+object_bindings (Array[MovieSceneBindingProxy])
+
+classmethod select_channels(channels) → None
+Select channels
+
+Parameters:
+channels (Array[SequencerChannelProxy])
+
+classmethod select_folders(folders) → None
+Select folders
+
+Parameters:
+folders (Array[MovieSceneFolder])
+
+classmethod select_keys(channel, indices) → None
+Select keys from indices
+
+Parameters:
+channel (SequencerChannelProxy)
+
+indices (Array[int32])
+
+classmethod select_sections(sections) → None
+Select sections
+
+Parameters:
+sections (Array[MovieSceneSection])
+
+classmethod select_tracks(tracks) → None
+Select tracks
+
+Parameters:
+tracks (Array[MovieSceneTrack])
+
+classmethod set_current_local_time(new_frame) → None
+Set Current Local Time deprecated: Use SetCurrentLocalTime that takes a FMovieSceneSequencePlaybackParams
+
+Parameters:
+new_frame (int32)
+
+classmethod set_current_time(new_frame) → None
+Set Current Time deprecated: Use SetCurrentTime that takes a FMovieSceneSequencePlaybackParams
+
+Parameters:
+new_frame (int32)
+
+classmethod set_custom_color_for_channel(class_, identifier, new_color) → None
+Set Custom Color for Channel deprecated: Use USequencerCurveEditorObject::SetCustomColorForChannel
+
+Parameters:
+class (type(Class))
+
+identifier (str)
+
+new_color (LinearColor)
+
+classmethod set_custom_color_for_channels(class_, identifiers, new_colors) → None
+Set Custom Color for Channels deprecated: Use USequencerCurveEditorObject::DeleteColorForChannels
+
+Parameters:
+class (type(Class))
+
+identifiers (Array[str])
+
+new_colors (Array[LinearColor])
+
+classmethod set_global_position(playback_params, time_unit=MovieSceneTimeUnit.DISPLAY_RATE) → None
+Set global playhead position for the current level sequence. If the requested time is the same as the current time, an evaluation will be forced.
+
+Parameters:
+playback_params (MovieSceneSequencePlaybackParams)
+
+time_unit (MovieSceneTimeUnit)
+
+classmethod set_local_position(playback_params, time_unit=MovieSceneTimeUnit.DISPLAY_RATE) → None
+Set local playhead position for the current level sequence. If the requested time is the same as the current time, an evaluation will be forced.
+
+Parameters:
+playback_params (MovieSceneSequencePlaybackParams)
+
+time_unit (MovieSceneTimeUnit)
+
+classmethod set_lock_camera_cut_to_viewport(lock) → None
+Sets the lock for the viewport to the camera cuts.
+
+Parameters:
+lock (bool)
+
+classmethod set_lock_level_sequence(lock) → None
+Sets the lock for the current level sequence and its descendants for editing.
+
+Parameters:
+lock (bool)
+
+classmethod set_loop_mode(new_loop_mode) → None
+Set loop mode (note this is a per user preference)
+
+Parameters:
+new_loop_mode (SequencerLoopMode)
+
+classmethod set_playback_speed(new_playback_speed) → None
+Set playback speed of the current level sequence
+
+Parameters:
+new_playback_speed (float)
+
+classmethod set_random_color_for_channels(class_, identifiers) → None
+Set Random Color for Channels deprecated: Use USequencerCurveEditorObject::SetRandomColorForChannels
+
+Parameters:
+class (type(Class))
+
+identifiers (Array[str])
+
+classmethod set_selection_range_end(new_frame) → None
+Set the selection range end frame.
+
+Parameters:
+new_frame (int32)
+
+classmethod set_selection_range_start(new_frame) → None
+Set the selection range start frame.
+
+Parameters:
+new_frame (int32)
+
+classmethod set_track_filter_active(track_filter_name, active) → None
+Sets the specified track filter to be on or off
+
+Parameters:
+track_filter_name (Text)
+
+active (bool)
+
+classmethod set_track_filter_enabled(track_filter_name, enabled) → None
+Set Track Filter Enabled
+
+Parameters:
+track_filter_name (Text)
+
+enabled (bool)
