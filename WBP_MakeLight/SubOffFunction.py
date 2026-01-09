@@ -44,6 +44,21 @@ def _collect_tracks(seq: unreal.LevelSequence):
                 if x not in tracks:
                     tracks.append(x)
 
+    # 바인딩(오브젝트) 트랙 수집 (UE5.6 대응)
+    for owner in (seq, ms):
+        bindings = _try_call(owner, "get_bindings")
+        if bindings:
+            for b in bindings:
+                bt = _try_call(b, "get_tracks") or []
+                for x in bt:
+                    if x not in tracks:
+                        tracks.append(x)
+                for cls in (unreal.MovieSceneSubTrack, unreal.MovieSceneTrack):
+                    bt2 = _try_call(b, "find_tracks_by_type", cls) or []
+                    for x in bt2:
+                        if x not in tracks:
+                            tracks.append(x)
+
     return tracks
 
 def _iter_shot_subsections(master_seq: unreal.LevelSequence):
@@ -74,6 +89,13 @@ def _disable_track(track) -> bool:
             return True
         except Exception:
             pass
+    # 1.1) set_eval_disabled(True) (함수명 변형 호환)
+    if hasattr(track, "set_eval_disabled"):
+        try:
+            track.set_eval_disabled(True)
+            return True
+        except Exception:
+            pass
     # 2) set_enabled(False)
     if hasattr(track, "set_enabled"):
         try:
@@ -91,17 +113,103 @@ def _disable_track(track) -> bool:
                 return True
         except Exception:
             pass
-    # 4) eval_options.enable (구버전 호환)
+    # 3.5) 트랙 뮤트 (UI 비활성 상태 설정)
+    for setter in ("set_is_muted", "set_muted", "set_mute"):
+        if hasattr(track, setter):
+            try:
+                getattr(track, setter)(True)
+                return True
+            except Exception:
+                pass
+    for prop in ("mute", "muted", "is_muted"):
+        try:
+            if track.has_editor_property(prop):
+                if not track.get_editor_property(prop):
+                    track.set_editor_property(prop, True)
+                    return True
+        except Exception:
+            pass
+    # 4) eval_options.can_evaluate 계열 (엔진 버전 호환)
     try:
         eval_opts = track.get_editor_property("eval_options")
-        if hasattr(eval_opts, "enable"):
-            if getattr(eval_opts, "enable"):
-                setattr(eval_opts, "enable", False)
-                track.set_editor_property("eval_options", eval_opts)
-                return True
+        changed = False
+        for attr in ("can_evaluate", "b_can_evaluate", "enable"):
+            if hasattr(eval_opts, attr):
+                if getattr(eval_opts, attr):
+                    setattr(eval_opts, attr, False)
+                    changed = True
+                break
+        if changed:
+            track.set_editor_property("eval_options", eval_opts)
+            return True
     except Exception:
         pass
-    return False
+    # 5) Sequencer Scripting 확장 API 사용
+    try:
+        ext = getattr(unreal, "MovieSceneTrackExtensions", None)
+        if ext:
+            if hasattr(ext, "set_evaluation_enabled"):
+                ext.set_evaluation_enabled(track, False)
+                return True
+            # row 기반 API 시도
+            num_rows = 1
+            if hasattr(ext, "get_num_rows"):
+                try:
+                    num_rows = max(1, int(ext.get_num_rows(track)))
+                except Exception:
+                    num_rows = 1
+            if hasattr(ext, "set_row_evaluation_enabled"):
+                any_row = False
+                for i in range(num_rows):
+                    try:
+                        ext.set_row_evaluation_enabled(track, i, False)
+                        any_row = True
+                    except Exception:
+                        pass
+                if any_row:
+                    return True
+            for fn in ("set_row_evaluation_disabled", "set_row_eval_disabled"):
+                if hasattr(ext, fn):
+                    any_row = False
+                    for i in range(num_rows):
+                        try:
+                            getattr(ext, fn)(track, i, True)
+                            any_row = True
+                        except Exception:
+                            pass
+                    if any_row:
+                        return True
+    except Exception:
+        pass
+
+    return not _is_track_enabled(track)
+
+def _is_track_enabled(track) -> bool:
+    """트랙의 현재 활성 상태를 최대한 신뢰성 있게 판정."""
+    # eval_disabled 우선 확인
+    try:
+        if track.has_editor_property("eval_disabled"):
+            if bool(track.get_editor_property("eval_disabled")):
+                return False
+    except Exception:
+        pass
+    # enabled / is_enabled 확인
+    for prop in ("enabled", "is_enabled"):
+        try:
+            if track.has_editor_property(prop):
+                return bool(track.get_editor_property(prop))
+        except Exception:
+            pass
+    # eval_options 내부 플래그 확인
+    try:
+        eval_opts = track.get_editor_property("eval_options")
+        for attr in ("can_evaluate", "b_can_evaluate", "enable"):
+            if hasattr(eval_opts, attr):
+                return bool(getattr(eval_opts, attr))
+    except Exception:
+        pass
+    # 판단 불가 시 활성로 간주 (엔진 기본값)
+    return True
 
 def _disable_section(sec) -> bool:
     """섹션 비활성화(보조)."""
@@ -139,11 +247,8 @@ def _disable_all_subsequence_tracks_in_sequence(seq: unreal.LevelSequence) -> (i
     if not ms:
         return (0, 0)
 
-    # 후보 트랙 모으기
-    candidate_tracks = []
-    for t in _collect_tracks(seq):
-        if isinstance(t, unreal.MovieSceneSubTrack):
-            candidate_tracks.append(t)
+    # 후보 트랙 모으기: 모든 트랙 대상 (UE5.6 Deactivate 토글 대응)
+    candidate_tracks = list(_collect_tracks(seq))
 
     # 디버깅: 아무것도 못찾을 경우 트랙 구성 로그
     if not candidate_tracks:
@@ -166,12 +271,11 @@ def _disable_all_subsequence_tracks_in_sequence(seq: unreal.LevelSequence) -> (i
         if _disable_track(track):
             disabled_tracks += 1
 
-        # 2) 트랙의 모든 섹션(=MovieSceneSubSection)도 보조적으로 비활성화
+        # 2) 트랙의 모든 섹션도 비활성화 (타입 불문)
         secs = _try_call(track, "get_sections") or []
         for sec in secs:
-            if isinstance(sec, unreal.MovieSceneSubSection):
-                if _disable_section(sec):
-                    disabled_sections += 1
+            if _disable_section(sec):
+                disabled_sections += 1
 
     return (disabled_tracks, disabled_sections)
 
