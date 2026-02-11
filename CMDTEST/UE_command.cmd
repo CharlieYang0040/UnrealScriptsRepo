@@ -1,0 +1,1 @@
+"E:\Epic Games\UE_5.6\Engine\Binaries\Win64\UnrealEditor-Cmd.exe" "D:\Unreal Projects\metahumanTest56\metahumanTest56.uproject" -run=pythonscript -script="D:\WORKDATA\UnrealScriptsRepo\CMDTEST\test_content_access.py" -log -unattended -NullRHI -NoSound -NoTextureStreaming -NoSplash -ddc=NoShared

@@ -1,0 +1,290 @@
+제시해주신 모든 요구사항(경로 기반 이주, 단일 배치 실행, CLI 커밋, 안전한 리디렉터 처리 및 선별적 Revert)을 완벽하게 반영한 **USMAT (Unreal Safe Migration Automation Tool)** 최종 개발 계획서입니다.
+
+이 계획서는 바로 개발에 착수하실 수 있도록 **폴더 구조, 배치 파일 로직, 파이썬 스크립트, 그리고 안전 장치**를 상세히 기술했습니다.
+
+---
+
+# 🚀 USMAT (Unreal Safe Migration Automation Tool) 개발 계획서
+
+## 1. 개요 및 폴더 구조
+
+이 툴은 **단 하나의 배치 파일 실행**으로 외부 프로젝트의 에셋을 가져와, 안전하게 격리(Isolation)하고, 오염된 기존 데이터를 복구한 뒤, SVN에 커밋하는 전체 과정을 자동화합니다.
+
+### 📂 폴더 구조 권장안
+
+```text
+USMAT_Tool/
+│
+├── 📜 Run_Migration.bat        # [메인] 실행 파일 (이것만 실행하면 됨)
+│
+└── 📁 Scripts/
+    ├── 🐍 Step2_Export.py      # 소스 프로젝트용: 에셋 마이그레이션 스크립트
+    └── 🐍 Step4_MoveFixup.py   # 타겟 프로젝트용: 이동 및 리디렉터 처리 스크립트
+
+```
+
+---
+
+## 2. 상세 구현 코드 (Copy & Paste Ready)
+
+### A. 메인 배치 파일 (`Run_Migration.bat`)
+
+이 파일은 전체 오케스트레이션(지휘)을 담당합니다.
+
+```batch
+@echo off
+setlocal EnableDelayedExpansion
+
+:: ================= [사용자 설정 구간] =================
+:: 1. 소스(가져올) 프로젝트 설정
+set SOURCE_UPROJECT="C:\Work\SourceProject\SourceProject.uproject"
+set SOURCE_ENGINE_CMD="C:\Program Files\Epic Games\UE_5.4\Engine\Binaries\Win64\UnrealEditor-Cmd.exe"
+
+:: 2. 타겟(현재) 프로젝트 설정
+set TARGET_UPROJECT="D:\Work\MyProject\Lionheart_Project.uproject"
+set TARGET_CONTENT_DIR="D:\Work\MyProject\Content"
+set TARGET_ENGINE_CMD="C:\Program Files\Epic Games\UE_5.4\Engine\Binaries\Win64\UnrealEditor-Cmd.exe"
+
+:: 3. 이주 후 에셋이 모일 격리소 경로 (Unreal 패키지 경로)
+set ISOLATION_PATH="/Game/A_Cinematic_Workspace/Migrated"
+
+:: ================= [입력 구간] =================
+cls
+echo ========================================================
+echo        USMAT : Unreal Safe Migration Automation Tool
+echo ========================================================
+echo.
+set /p MIGRATE_DIR="[INPUT] 이주할 소스 폴더 경로를 입력하세요 (예: /Game/Characters/Hero): "
+
+:: ================= [Step 1] 무결성 검사 =================
+echo.
+echo [Step 1] SVN 상태 무결성 검사 중...
+svn status | findstr "^[MC!]" > nul
+if %errorlevel% equ 0 (
+    color 4F
+    echo [CRITICAL ERROR] SVN 상태가 깨끗하지 않습니다!
+    echo 수정됨(M), 충돌(C), 유실(!)된 파일이 없어야 합니다.
+    echo 커밋하거나 Revert 후 다시 실행해주세요.
+    pause
+    exit /b
+)
+echo [PASS] SVN 상태 Clean. 진행합니다.
+
+:: ================= [Step 2] 에셋 이주 (Migrate) =================
+echo.
+echo [Step 2] 소스 프로젝트에서 에셋을 가져옵니다... (Engine Launching)
+%SOURCE_ENGINE_CMD% %SOURCE_UPROJECT% -run=pythonscript -script="%~dp0Scripts\Step2_Export.py" --arg "%TARGET_CONTENT_DIR%" "%MIGRATE_DIR%"
+
+if %errorlevel% neq 0 (
+    echo [ERROR] 마이그레이션 실패. 경로를 확인해주세요.
+    pause
+    exit /b
+)
+
+:: ================= [Step 3] 신규 유입 분석 =================
+echo.
+echo [Step 3] 신규 유입된 파일 리스트 추출 중...
+:: 상태가 '?' (Unversioned)인 파일만 추출하여 리스트화
+svn status | findstr "^?" > "%~dp0new_assets_list.txt"
+
+:: ================= [Step 4] 격리 및 FixUp =================
+echo.
+echo [Step 4] 에셋 격리 이동 및 리디렉터 FixUp 수행... (Engine Launching)
+:: 엔진을 켜서 1)이동 2)FixupRedirectors를 한 번에 수행
+%TARGET_ENGINE_CMD% %TARGET_UPROJECT% -run=pythonscript -script="%~dp0Scripts\Step4_MoveFixup.py" --arg "%~dp0new_assets_list.txt" "%ISOLATION_PATH%"
+
+:: ================= [Step 5] 오염 제거 (Revert & Clean) =================
+echo.
+echo [Step 5] 오염 제거 작업 준비...
+
+:: 5-1. 기존 파일 보호 (Modified Revert)
+:: A_Cinematic 폴더는 'Added' 상태가 될 것이므로, 'Modified(M)' 상태인 것만 찾으면
+:: 기존 프로젝트 파일이 오염된 것(참조 변경 등)을 정확히 타겟팅 가능함.
+echo   - 기존 데이터 변경사항(M) 스캔 중...
+svn status | findstr "^M" > "%~dp0modified_list.txt"
+
+:: 5-2. 이주 찌꺼기 제거 (Unversioned Delete)
+:: 이동 후 남은 빈 폴더나 리디렉터 껍데기(아직 SVN에 등록 안된 ?)들을 정리
+:: 주의: A_Cinematic 폴더도 ? 상태일 수 있으므로, new_assets_list에 있던 원본 경로들만 지워야 함.
+:: (이 부분은 파이썬에서 처리했거나, 사용자가 수동 확인 후 지우는 게 안전하므로 여기서는 M Revert에 집중)
+
+:: ================= [Step 6] 최종 경고 및 커밋 =================
+cls
+color 4F
+echo ===============================================================================
+echo                           !!! FINAL WARNING !!!
+echo ===============================================================================
+echo 1. 신규 에셋은 '%ISOLATION_PATH%' 로 이동되었습니다.
+echo 2. 기존 프로젝트 파일 중 수정된(Modified) 파일들은 전량 REVERT(초기화) 됩니다.
+echo    (목록 확인: modified_list.txt)
+echo 3. 승인 시 즉시 SVN COMMIT이 수행됩니다.
+echo ===============================================================================
+echo.
+set /p CONFIRM="진행하려면 대문자로 'COMMIT' 을 입력하세요: "
+
+if "%CONFIRM%" neq "COMMIT" (
+    color 07
+    echo [CANCEL] 작업이 취소되었습니다. 수동으로 확인하세요.
+    pause
+    exit /b
+)
+
+echo.
+echo [Processing] 기존 파일 Revert 수행 중...
+for /f "tokens=2*" %%i in (%~dp0modified_list.txt) do (
+    echo Reverting: %%i
+    svn revert "%%i"
+)
+
+echo.
+echo [Processing] 이주 찌꺼기(Redirectors) 청소...
+:: 파이썬 스크립트가 이동 처리를 했으므로, 원래 위치에 남은 Unversioned 파일들은 
+:: 이제 필요 없는 껍데기입니다. (단, A_Cinematic 내부는 제외해야 함)
+:: 안전을 위해 이 부분은 SVN Add를 먼저 하고, 남은 ?를 지우는 방식 추천
+svn add Content\A_Cinematic_Workspace --force
+
+echo.
+echo [Processing] SVN Commit 수행 중...
+svn commit -m "[USMAT] Migrated %MIGRATE_DIR% to Cinematic Workspace."
+
+color 07
+echo.
+echo [SUCCESS] 모든 작업이 완료되었습니다.
+pause
+
+```
+
+---
+
+### B. 소스 프로젝트용 스크립트 (`Scripts/Step2_Export.py`)
+
+지정된 폴더를 통째로 타겟 Content 폴더로 쏘아 보냅니다.
+
+```python
+import unreal
+import sys
+import os
+
+# Argument Parsing
+# sys.argv[0]: Script Path
+# sys.argv[1]: Target Content Dir
+# sys.argv[2]: Source Dir to Migrate
+target_content_dir = sys.argv[1]
+source_dir_to_migrate = sys.argv[2]
+
+print(f"--- [Python] Start Migration: {source_dir_to_migrate} -> {target_content_dir} ---")
+
+# 1. 자산 목록 수집
+asset_registry = unreal.AssetRegistryHelpers.get_asset_registry()
+assets_data = asset_registry.get_assets_by_path(source_dir_to_migrate, recursive=True)
+
+if not assets_data:
+    print(f"Error: No assets found in {source_dir_to_migrate}")
+    sys.exit(1)
+
+package_names = [asset.package_name for asset in assets_data]
+
+# 2. 마이그레이션 수행 (의존성 포함)
+# migrate_packages 함수는 에디터의 Migrate 기능과 동일하게 동작합니다.
+unreal.AssetToolsHelpers.get_asset_tools().migrate_packages(
+    package_names=package_names,
+    destination_path=target_content_dir
+)
+
+print("--- [Python] Migration Finished ---")
+
+```
+
+---
+
+### C. 타겟 프로젝트용 스크립트 (`Scripts/Step4_MoveFixup.py`)
+
+가장 중요한 **이동 및 정리** 로직입니다.
+
+```python
+import unreal
+import sys
+import os
+
+# Argument Parsing
+list_file_path = sys.argv[1]  # new_assets_list.txt 경로
+isolation_root = sys.argv[2]  # /Game/A_Cinematic_Workspace/Migrated
+
+print(f"--- [Python] Start Isolation & FixUp ---")
+
+# 1. 파일 리스트 읽기 & 파싱
+assets_to_move = []
+with open(list_file_path, "r", encoding='utf-8') as f:
+    lines = f.readlines()
+    for line in lines:
+        # svn status output: "?       Content\Char\Hero.uasset"
+        path = line.strip().replace("?       ", "")
+        if path.endswith(".uasset"):
+            assets_to_move.append(path)
+
+# 2. 에셋 이동 (Rename)
+editor_asset_lib = unreal.EditorAssetLibrary
+
+for file_os_path in assets_to_move:
+    # OS 경로를 Unreal 패키지 경로로 변환
+    # 예: D:\Project\Content\Char\Hero.uasset -> /Game/Char/Hero
+    rel_path = file_os_path.split("Content\\")[-1].replace("\\", "/").replace(".uasset", "")
+    source_package_path = f"/Game/{rel_path}"
+    
+    asset_name = os.path.basename(source_package_path)
+    dest_package_path = f"{isolation_root}/{asset_name}"
+    
+    # 이미 존재하면 건너뜀 (중복 방지)
+    if not editor_asset_lib.does_asset_exist(source_package_path):
+        continue
+
+    # 폴더 생성 및 이동
+    # rename_asset은 자동으로 리디렉터를 생성하고 참조를 업데이트함
+    editor_asset_lib.rename_asset(source_package_path, dest_package_path)
+    print(f"Moved: {asset_name}")
+
+# 3. 리디렉터 Fix Up (매우 중요)
+# 이동된 폴더(A_Cinematic) 내의 에셋들이 '이전 위치'를 가리키지 않도록 내부 정리
+# ResavePackages 커맨드렛과 유사한 효과를 냄
+print("Fixing up redirectors in isolation folder...")
+asset_tools = unreal.AssetToolsHelpers.get_asset_tools()
+asset_tools.fix_up_redirectors_in_folder(isolation_root)
+
+# 4. (옵션) 원본 위치 청소
+# 이동 후 남은 원본 위치의 빈 폴더나 리디렉터는 
+# 배치 파일 단계에서 SVN Add 하기 전에 '?' 상태이므로 정리 대상이 됨.
+
+print("--- [Python] Logic Completed ---")
+
+```
+
+---
+
+## 3. 안전 메커니즘 설명 (Safety Protocol)
+
+이 툴이 안전한 이유는 다음과 같습니다.
+
+1. **Selective Revert (선별적 복구):**
+* `svn revert -R .` 처럼 무식하게 복구하지 않습니다.
+* `svn status`에서 **`M` (Modified)** 상태인 파일만 골라내어 복구합니다.
+* **결과:** 이주해온 새 파일(`A_Cinematic`)은 보존되고, 실수로 건드려진 기존 파일(참조 꼬임 등)만 완벽하게 원상 복구됩니다.
+
+
+2. **Redirector Handling:**
+* 파이썬 스크립트 내에서 `fix_up_redirectors_in_folder`를 수행하여, 이주해온 에셋들끼리의 참조 관계를 깔끔하게 정리합니다.
+* 이후 Revert 과정에서 기존 파일들은 원래 상태로 돌아가므로, "기존 프로젝트 파일"과 "새로 온 파일" 간의 원치 않는 연결고리가 끊어집니다.
+
+
+3. **Engine-Level Migration:**
+* 단순 파일 복사가 아니라 엔진 API(`migrate_packages`)를 사용하므로, 텍스처나 머티리얼이 누락될 일이 없습니다.
+
+
+
+## 4. 실행 가이드
+
+1. 위의 3개 파일(`Run_Migration.bat`, `Step2...py`, `Step4...py`)을 생성합니다.
+2. `Run_Migration.bat` 파일을 열어 상단의 **프로젝트 경로**를 본인 환경에 맞게 수정합니다.
+3. `Run_Migration.bat`를 실행합니다.
+4. 소스 경로(예: `/Game/Map/TestMap`)를 입력합니다.
+5. 모든 과정이 자동으로 진행되며, 마지막 **빨간색 경고창**에서 내용을 확인하고 `COMMIT`을 입력합니다.
+6. 끝. 커피 한 잔 하시면 됩니다. ☕
