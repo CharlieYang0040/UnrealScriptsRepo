@@ -327,6 +327,23 @@ def show_menu():
     print("q. 종료")
     print("-" * 50)
 
+def get_base_dir():
+    """
+    어떤 환경(순수 파이썬, PyInstaller, Nuitka 등)에서 실행되더라도
+    항상 메인 실행 파일(.exe 또는 .py)이 있는 폴더의 절대 경로를 반환합니다.
+    """
+    # 1. Nuitka로 빌드된 환경인지 체크
+    if "__compiled__" in globals():
+        return os.path.dirname(os.path.abspath(sys.argv[0]))
+    
+    # 2. PyInstaller로 빌드된 환경인지 체크
+    elif getattr(sys, 'frozen', False):
+        return os.path.dirname(sys.executable)
+    
+    # 3. 일반 파이썬 스크립트(.py)로 실행된 경우
+    else:
+        return os.path.dirname(os.path.abspath(__file__))
+
 def main():
     # 설정 로드
     if getattr(sys, 'frozen', False):
@@ -336,6 +353,8 @@ def main():
         # 일반 스크립트 실행
         script_dir = os.path.dirname(os.path.abspath(__file__))
         
+    # 수정된 경로 탐색 로직 적용!
+    script_dir = get_base_dir()
     config_path = os.path.join(script_dir, CONFIG_FILE)
     config_mgr = ConfigManager(config_path)
     paths = config_mgr.get_paths()

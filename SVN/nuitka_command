@@ -1,0 +1,1 @@
+python -m nuitka --standalone --onefile --onefile-no-compression --enable-plugin=upx --upx-binary="D:\WORKDATA\upx-5.1.0-win64\upx.exe" --output-dir=dist --remove-output svn_reset_manager.py
