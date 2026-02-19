@@ -5,11 +5,13 @@ import unreal
 try:
     import CinematicQuery
     import CinematicUtils
+    import CinematicRender
     
     # 2. 변경사항 즉시 반영 (리로드)
     import importlib
     importlib.reload(CinematicQuery)
     importlib.reload(CinematicUtils)
+    importlib.reload(CinematicRender)
 
     unreal.log("✅ [Init] Python Modules Loaded Successfully for Blueprints!")
 
