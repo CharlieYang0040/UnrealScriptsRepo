@@ -405,6 +405,87 @@ class CinematicSelectionLib(unreal.BlueprintFunctionLibrary):
             unreal.log_warning("⚠️ Main Manager or Clicked Widget is invalid!")
 
 @unreal.uclass()
+class CinematicAssetLib(unreal.BlueprintFunctionLibrary):
+
+    @unreal.ufunction(static=True, params=[], ret=None, meta=dict(Category="Cinematic Asset"))
+    def play_selected_shots_as_sequence():
+        """
+        선택된 샷들을 모아서 하나의 임시 마스터 시퀀스를 만들고 엽니다.
+        """
+        try:
+            selected_paths = CinematicSelectionLib.get_selected_shot_paths()
+        except:
+            unreal.log_error("CinematicSelectionLib not found.")
+            return
+
+        if not selected_paths or len(selected_paths) == 0:
+            unreal.log_warning("⚠️ No shots selected to play.")
+            return
+
+        # 1. 임시 마스터 시퀀스 경로 설정
+        temp_folder = "/Game/A_Cinematic_Workspace/Sequencer/Temp"
+        temp_name = "Temp_PreviewMaster"
+        temp_full_path = f"{temp_folder}/{temp_name}.{temp_name}"
+
+        # 2. 기존에 임시 파일이 있다면 삭제
+        if unreal.EditorAssetLibrary.does_asset_exist(temp_full_path):
+            unreal.EditorAssetLibrary.delete_asset(temp_full_path)
+
+        # 3. 새 레벨 시퀀스 에셋 생성
+        asset_tools = unreal.AssetToolsHelpers.get_asset_tools()
+        factory = unreal.LevelSequenceFactoryNew()
+        master_seq = asset_tools.create_asset(temp_name, temp_folder, unreal.LevelSequence, factory)
+
+        if not master_seq:
+            unreal.log_error("Failed to create temporary master sequence.")
+            return
+
+        # -------------------------------------------------------------
+        # 🛠️ 수정됨: LevelSequence 객체에서 직접 add_track 호출 (UE 5.6+ 규격)
+        # -------------------------------------------------------------
+        shot_track = master_seq.add_track(unreal.MovieSceneCinematicShotTrack)
+
+        if not shot_track:
+            unreal.log_error("Failed to add Cinematic Shot Track.")
+            return
+
+        current_start_frame = 0
+
+        for path in selected_paths:
+            shot_asset = unreal.load_asset(path)
+            if not shot_asset:
+                continue
+
+            # 샷의 원래 길이(Duration) 구하기
+            shot_start = shot_asset.get_playback_start()
+            shot_end = shot_asset.get_playback_end()
+            duration = shot_end - shot_start
+
+            # 트랙에 섹션(클립) 추가
+            section = shot_track.add_section()
+            
+            # 섹션에 샷 에셋 연결
+            section.set_sequence(shot_asset)
+            
+            # -------------------------------------------------------------
+            # 🛠️ [수정됨] 언리얼 Range 검사 에러를 피하기 위해 무조건 End부터 설정!
+            # -------------------------------------------------------------
+            section.set_end_frame(current_start_frame + duration)
+            section.set_start_frame(current_start_frame)
+            
+            # 다음 샷을 위해 현재 시간을 끝점으로 이동
+            current_start_frame += duration
+
+        # 전체 재생 구간 설정
+        master_seq.set_playback_start(0)
+        master_seq.set_playback_end(current_start_frame)
+
+        # 시퀀서 에디터로 열기
+        unreal.get_editor_subsystem(unreal.AssetEditorSubsystem).open_editor_for_assets([master_seq])
+        
+        unreal.log(f"🎬 Created preview master with {len(selected_paths)} shots.")
+
+@unreal.uclass()
 class CinematicUtilsBPLibrary(unreal.BlueprintFunctionLibrary):
 
     @unreal.ufunction(static=True, params=[str, unreal.Vector, str, unreal.Vector], meta={

@@ -1,11 +1,12 @@
 import os
+import shutil
 import sys
 import subprocess
 import configparser
 import xml.etree.ElementTree as ET
 
 # 설정 파일 이름
-CONFIG_FILE = 'svn_reset_config.ini'
+CONFIG_FILE = 'svn_manager_config.ini'
 
 class ConfigManager:
     def __init__(self, config_path):
