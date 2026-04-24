@@ -1,56 +1,61 @@
 import unreal
 
-def add_prefix_to_assets_in_selected_folders():
-    # 설정: 추가할 접두사 정의
+def get_clean_path(path_string):
+    """ObjectPath(.Asset)를 패키지 경로로 정제"""
+    return path_string.split('.')[0]
+
+def rename_assets():
     PREFIX = "CN_"
     
-    # 1. 콘텐츠 브라우저에서 선택된 폴더 경로들을 가져옵니다.
+    # 1. 폴더 선택 확인 및 경로 보정
     selected_folders = unreal.EditorUtilityLibrary.get_selected_folder_paths()
-
     if not selected_folders:
         unreal.log_warning("선택된 폴더가 없습니다.")
         return
-
-    renamed_count = 0
-
-    with unreal.ScopedEditorTransaction("Add Prefix CN_"):
         
-        for folder_path in selected_folders:
-            # === [중요] 경로 보정 로직 추가 ===
-            # /All/Game/... 형태로 들어올 경우 /All을 제거하여 /Game/... 으로 변경
-            if folder_path.startswith("/All/"):
-                folder_path = folder_path[4:]  # 앞의 "/All" 4글자 제거
-            
-            unreal.log(f"Processing folder: {folder_path}")
-            
-            # 경로 유효성 검사 (실제 존재하는지 확인)
+    cleaned_folder_paths = [f[4:] if f.startswith("/All/") else f for f in selected_folders]
+    
+    # 2. 전체 작업 트랜잭션 시작 (에러 시 Undo 가능)
+    with unreal.ScopedEditorTransaction("Rename Assets to CN_"):
+        
+        renamed_count = 0
+        
+        for folder_path in cleaned_folder_paths:
             if not unreal.EditorAssetLibrary.does_directory_exist(folder_path):
-                unreal.log_warning(f"폴더를 찾을 수 없거나 유효하지 않은 경로입니다: {folder_path}")
                 continue
-
-            # 3. 해당 폴더 및 하위 폴더의 모든 에셋 경로를 가져옵니다.
+                
             asset_paths = unreal.EditorAssetLibrary.list_assets(folder_path, recursive=True, include_folder=False)
             
-            for asset_path in asset_paths:
-                asset_data = unreal.EditorAssetLibrary.find_asset_data(asset_path)
+            for raw_path in asset_paths:
+                clean_path = get_clean_path(raw_path)
                 
+                # 에셋 데이터 가져오기
+                asset_data = unreal.EditorAssetLibrary.find_asset_data(clean_path)
+                
+                if not asset_data or not asset_data.is_valid():
+                    continue
+                    
                 old_name = str(asset_data.asset_name)
                 package_path = str(asset_data.package_path)
                 
-                # 4. 이름 변경 로직
+                # 접두사가 없는 경우에만 변경 진행
                 if not old_name.startswith(PREFIX):
                     new_name = PREFIX + old_name
                     new_asset_path = f"{package_path}/{new_name}"
                     
-                    success = unreal.EditorAssetLibrary.rename_asset(asset_path, new_asset_path)
-                    
-                    if success:
-                        unreal.log(f"Renamed: {old_name} -> {new_name}")
+                    # 목적지에 이미 에셋(또는 리다이렉터)이 있는지 최종 방어
+                    if unreal.EditorAssetLibrary.does_asset_exist(new_asset_path):
+                        unreal.log_warning(f"건너뜀: 해당 경로에 이미 에셋이 존재합니다 -> {new_asset_path}")
+                        continue
+                        
+                    # 이름 변경 실행
+                    if unreal.EditorAssetLibrary.rename_asset(clean_path, new_asset_path):
                         renamed_count += 1
+                        unreal.log(f"Renamed: {old_name} -> {new_name}")
                     else:
-                        unreal.log_error(f"Failed to rename: {asset_path}")
-
+                        unreal.log_error(f"Failed to rename: {clean_path}")
+                        
     unreal.log(f"작업 완료: 총 {renamed_count}개의 에셋 이름이 변경되었습니다.")
 
-# 함수 실행
-add_prefix_to_assets_in_selected_folders()
+# 실행
+rename_assets()
